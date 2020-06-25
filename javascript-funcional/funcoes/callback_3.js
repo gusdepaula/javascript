@@ -21,9 +21,26 @@ const carrinho = [
     { nome: 'Tesoura', qtde: 1, preco: 19.20 }
 ]
 
+// const nomeProduto = n => n.nome
+// console.log(carrinho.map(nomeProduto))
+
+// const qtdeXPreco = x => x.qtde * x.preco
+// const totais = carrinho.map(qtdeXPreco)
+// console.log(totais)
+
+//CRIANDO MEU PROPRIO MAP
+Array.prototype.meuMap = function (fn) {
+    const novoArray = []
+    for (let i = 0; i < this.length; i ++) {
+        const resultado = fn(this[i], i, this)
+        novoArray.push(resultado)
+    }
+    return novoArray
+}
+
 const nomeProduto = n => n.nome
-console.log(carrinho.map(nomeProduto))
+console.log(carrinho.meuMap(nomeProduto))
 
 const qtdeXPreco = x => x.qtde * x.preco
-const totais = carrinho.map(qtdeXPreco)
+const totais = carrinho.meuMap(qtdeXPreco)
 console.log(totais)

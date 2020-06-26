@@ -12,3 +12,20 @@ const somar = (acumulador, elemento) => acumulador + elemento
 const totais = carrinho.map(qtdeXPreco)
 const totalGeral = totais.reduce(somar)
 console.log(`O total geral é de R$${totalGeral}`)
+
+//CRIANDO MEU PROPRIO REDUCE
+Array.prototype.meuReduce = function (fn, valorInicial) {
+    let acumulador = valorInicial
+    for (let i = 0; i < this.length; i ++) {
+        if(!acumulador && i === 0) {
+            acumulador = this[i]
+            continue
+        } else {
+            acumulador = fn(acumulador, this[i], i, this)
+        }
+    }
+    return acumulador
+}
+
+const totalGeral2 = totais.meuReduce(somar)
+console.log(`O total geral do MEU REDUCE é de R$${totalGeral2}`)

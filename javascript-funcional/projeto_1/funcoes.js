@@ -1,11 +1,12 @@
-function teste1(){
-    console.log('teste 1...')
+const fs = require('fs')
+const path = require('path')
+
+function leituraArquivo (caminho) {
+    let arquivos = fs.readdirSync(caminho)
+    return arquivos.map(arquivo => path.join(caminho, arquivo)) 
 }
 
-function teste2(){
-    console.log('teste 2...')
-}
 
 module.exports = {
-    teste1, teste2
+    leituraArquivo
 }

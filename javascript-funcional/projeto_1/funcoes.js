@@ -13,8 +13,10 @@ function leituraArquivo (caminho) {
     })
 }
 
-function extensaoDosArquivos(array, extensao) {
-    return array.filter(caminhoDoArquivo => caminhoDoArquivo.endsWith(extensao))
+function extensaoDosArquivos(extensao) {
+    return function(array) {
+        return array.filter(caminhoDoArquivo => caminhoDoArquivo.endsWith(extensao))
+    }
 }
 
 function lerArquivo(caminho) {
@@ -38,8 +40,10 @@ function removerSeVazio(array) {
     return array.filter(element => element.trim())
 }
 
-function removerSePossuir(array, texto) {
-    return array.filter(elemento => !elemento.includes(texto))
+function removerSePossuir(texto) {
+    return function(array) {
+        return array.filter(elemento => !elemento.includes(texto))
+    }
 }
 
 function removerNumeros(array) {

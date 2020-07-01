@@ -34,9 +34,14 @@ function lerArquivos(caminhos) {
     )
 }
 
+function removerSeVazio(array) {
+    return array.filter(element => element.trim())
+}
+
 module.exports = {
     leituraArquivo,
     extensaoDosArquivos,
     lerArquivo,
-    lerArquivos
+    lerArquivos,
+    removerSeVazio
 }

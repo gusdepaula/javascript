@@ -42,11 +42,19 @@ function removerSePossuir(array, texto) {
     return array.filter(elemento => !elemento.includes(texto))
 }
 
+function removerNumeros(array) {
+    return array.filter(elemento => {
+        const numero = parseInt(elemento.trim())
+        return numero !== numero
+    })
+}
+
 module.exports = {
     leituraArquivo,
     extensaoDosArquivos,
     lerArquivo,
     lerArquivos,
     removerSeVazio,
-    removerSePossuir
+    removerSePossuir,
+    removerNumeros
 }

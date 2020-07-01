@@ -13,7 +13,11 @@ function leituraArquivo (caminho) {
     })
 }
 
+function extensaoDosArquivos(array, extensao) {
+    return array.filter(caminhoDoArquivo => caminhoDoArquivo.endsWith(extensao))
+}
 
 module.exports = {
-    leituraArquivo
+    leituraArquivo,
+    extensaoDosArquivos
 }

@@ -53,6 +53,18 @@ function removerNumeros(array) {
     })
 }
 
+function removeSimbolos(simbolos) {
+    return function(array) {
+        return array.map(elemento => {
+            let textoSemSimbolos = elemento
+            simbolos.forEach(simbolo => {
+                textoSemSimbolos = textoSemSimbolos.split(simbolo).join('')
+            });
+            return textoSemSimbolos
+        })
+    }
+}
+
 module.exports = {
     leituraArquivo,
     extensaoDosArquivos,
@@ -60,5 +72,6 @@ module.exports = {
     lerArquivos,
     removerSeVazio,
     removerSePossuir,
-    removerNumeros
+    removerNumeros,
+    removeSimbolos
 }

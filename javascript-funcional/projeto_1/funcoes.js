@@ -38,10 +38,15 @@ function removerSeVazio(array) {
     return array.filter(element => element.trim())
 }
 
+function removerSePossuir(array, texto) {
+    return array.filter(elemento => !elemento.includes(texto))
+}
+
 module.exports = {
     leituraArquivo,
     extensaoDosArquivos,
     lerArquivo,
     lerArquivos,
-    removerSeVazio
+    removerSeVazio,
+    removerSePossuir
 }

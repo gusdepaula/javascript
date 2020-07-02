@@ -8,18 +8,6 @@ const simbolos = [
     '</i>', '\r', '[', ']', '(', ')', '<font color=#ffff00 size=14>wwwtvsubtitlesnet</font>'
 ]
 
-function agruparPalavras(palavras) {
-    return palavras.reduce((agrupamento, palavra) => {
-        const p = palavra.toLowerCase()
-        if(agrupamento[p]) {
-            agrupamento[p] += 1
-        } else {
-            agrupamento[p] = 1
-        }
-        return agrupamento
-    }, {})
-}
-
 fn.leituraArquivo(caminho)
     .then(fn.extensaoDosArquivos('.srt'))
     .then(fn.lerArquivos)
@@ -33,5 +21,5 @@ fn.leituraArquivo(caminho)
     .then(fn.separarTextoPor(' '))
     .then(fn.removerSeVazio)
     .then(fn.removerNumeros)
-    .then(agruparPalavras)
+    .then(fn.agruparElementos)
     .then(console.log)

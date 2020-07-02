@@ -5,16 +5,23 @@ const caminho = path.join(__dirname, '..', 'dados', 'legendas')
 
 const simbolos = [
     '.', '?', '-', ',', '"', '♪', '_', '<i>',
-    '</i>', '\r', '[', ']', '(', ')'
+    '</i>', '\r', '[', ']', '(', ')', '<font color=#ffff00 size=14>wwwtvsubtitlesnet</font>'
 ]
+
+function agruparPalavrar() {
+    //reduce
+}
 
 fn.leituraArquivo(caminho)
     .then(fn.extensaoDosArquivos('.srt'))
     .then(fn.lerArquivos)
-    .then(conteudos => conteudos.join('\n'))
-    .then(todoConteudo => todoConteudo.split('\n'))
+    .then(fn.mesclarElementos)
+    .then(fn.separarTextoPor('\n'))
     .then(fn.removerSeVazio)
     .then(fn.removerSePossuir('-->'))
     .then(fn.removerNumeros)
     .then(fn.removeSimbolos(simbolos))
+    .then(fn.mesclarElementos)
+    .then(fn.separarTextoPor(' '))
+    .then(fn.removerSeVazio)
     .then(console.log)

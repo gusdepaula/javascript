@@ -4,7 +4,6 @@
 
 let qtdeDeExecucoes = 0
 
-//funcao pura
 function somar(a, b){
     qtdeDeExecucoes++ //efeitos colaterais observáveis
     return a + b

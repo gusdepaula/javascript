@@ -8,19 +8,23 @@ const simbolos = [
     '</i>', '\r', '[', ']', '(', ')', '<font color=#ffff00 size=14>wwwtvsubtitlesnet</font>'
 ]
 
-fn.leituraArquivo(caminho)
-    .then(fn.extensaoDosArquivos('.srt'))
-    .then(fn.lerArquivos)
-    .then(fn.mesclarElementos)
-    .then(fn.separarTextoPor('\n'))
-    .then(fn.removerSeVazio)
-    .then(fn.removerSePossuir('-->'))
-    .then(fn.removerNumeros)
-    .then(fn.removeSimbolos(simbolos))
-    .then(fn.mesclarElementos)
-    .then(fn.separarTextoPor(' '))
-    .then(fn.removerSeVazio)
-    .then(fn.removerNumeros)
-    .then(fn.agruparElementos)
-    .then(fn.ordenarPorAtributoNumerico('qtde', 'descendente'))
+const palavrasMaisUsadas = fn.composicao(
+    fn.leituraArquivo,
+    fn.extensaoDosArquivos('.srt'),
+    fn.lerArquivos,
+    fn.mesclarElementos,
+    fn.separarTextoPor('\n'),
+    fn.removerSeVazio,
+    fn.removerSePossuir('-->'),
+    fn.removerNumeros,
+    fn.removeSimbolos(simbolos),
+    fn.mesclarElementos,
+    fn.separarTextoPor(' '),
+    fn.removerSeVazio,
+    fn.removerNumeros,
+    fn.agruparElementos,
+    fn.ordenarPorAtributoNumerico('qtde', 'descendente')
+)
+
+palavrasMaisUsadas(caminho)
     .then(console.log)

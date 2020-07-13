@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
+//Usando função composição
 function composicao(...fns){
     return function(valor) {
         return fns.reduce(async (acc, fn) => {

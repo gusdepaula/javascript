@@ -1,4 +1,4 @@
-function gerarNumeros(fn) {
+function gerarNumeros() {
     return {
         iniciar(fn, intevalo = 1000) {
             let num = 0

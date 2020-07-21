@@ -71,10 +71,6 @@ function removeSimbolos(simbolos) {
     }))
 }
 
-function mesclarElementos(array) {
-    return array.join(' ')
-}
-
 function separarTextoPor(simbolo) {
     return createPipebleOperator(subscriber => ({
         next(texto) {
@@ -99,14 +95,6 @@ function agruparElementos() {
     }))
 }
 
-function ordenarPorAtributoNumerico(attr, ordem = 'ascendente') {
-    return function(array) {
-        const ascendente = (o1, o2) => o1[attr] - o2[attr]
-        const descendente = (o1, o2) => o2[attr] - o1[attr]
-        return [...array].sort(ordem == 'ascendente' ? ascendente : descendente)
-    }
-}
-
 function createPipebleOperator(operaratorFn) {
     return function(source) {
         return Observable.create(subscriber => {
@@ -128,8 +116,6 @@ module.exports = {
     removerSeVazio,
     removerNumeros,
     removeSimbolos,
-    mesclarElementos,
     separarTextoPor,
-    agruparElementos,
-    ordenarPorAtributoNumerico
+    agruparElementos
 }

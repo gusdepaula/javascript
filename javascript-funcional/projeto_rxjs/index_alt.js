@@ -1,7 +1,7 @@
 const fn = require('./funcoes')
 const path = require('path')
 const _ = require('lodash')
-const { toArray, map } = require('rxjs/operators')
+const { toArray, map, groupBy, mergeMap, reduce } = require('rxjs/operators')
 const caminho = path.join(__dirname, '..', 'dados', 'legendas')
 
 const simbolos = [
@@ -20,8 +20,10 @@ fn.leituraArquivo(caminho)
         fn.separarTextoPor(' '),
         fn.removerSeVazio(),
         fn.removerNumeros(),
+        groupBy(el => el),
+        mergeMap(grupo => grupo.pipe(toArray())),
+        map(palavras => ({palavra: palavras[0], qtde: palavras.length})),
         toArray(),
-        fn.agruparElementos(),
         map(array => _.sortBy(array, el => -el.qtde))
     )
     .subscribe(console.log)

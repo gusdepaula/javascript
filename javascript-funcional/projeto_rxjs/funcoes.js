@@ -49,17 +49,15 @@ function removerSeVazio() {
     }))
 }
 
-function removerSePossuir(texto) {
-    return function(array) {
-        return array.filter(elemento => !elemento.includes(texto))
-    }
-}
-
-function removerNumeros(array) {
-    return array.filter(elemento => {
-        const numero = parseInt(elemento.trim())
-        return numero !== numero
-    })
+function removerNumeros() {
+    return createPipebleOperator(subscriber => ({
+        next(texto) {
+            const numero = parseInt(texto.trim())
+            if(numero !== numero) {
+                subscriber.next(texto)
+            }
+        }
+    }))
 }
 
 function removeSimbolos(simbolos) {
@@ -124,7 +122,6 @@ module.exports = {
     extensaoDosArquivos,
     lerArquivo,
     removerSeVazio,
-    removerSePossuir,
     removerNumeros,
     removeSimbolos,
     mesclarElementos,

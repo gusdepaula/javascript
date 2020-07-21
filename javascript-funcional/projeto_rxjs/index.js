@@ -13,19 +13,14 @@ fn.leituraArquivo(caminho)
         fn.extensaoDosArquivos('.srt'),
         fn.lerArquivo(),
         fn.separarTextoPor('\n'),
-        fn.removerSeVazio()
+        fn.removerSeVazio(),
+        fn.removerNumeros()
     )
     .subscribe(console.log)
 
 // const palavrasMaisUsadas = fn.composicao(
-//     fn.leituraArquivo,
-//     fn.extensaoDosArquivos('.srt'),
 //     fn.lerArquivos,
 //     fn.mesclarElementos,
-//     fn.separarTextoPor('\n'),
-//     fn.removerSeVazio,
-//     fn.removerSePossuir('-->'),
-//     fn.removerNumeros,
 //     fn.removeSimbolos(simbolos),
 //     fn.mesclarElementos,
 //     fn.separarTextoPor(' '),

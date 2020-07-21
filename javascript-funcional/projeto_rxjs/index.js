@@ -1,6 +1,6 @@
 const fn = require('./funcoes')
 const path = require('path')
-
+const { first, toArray } = require('rxjs/operators')
 const caminho = path.join(__dirname, '..', 'dados', 'legendas')
 
 const simbolos = [
@@ -19,14 +19,13 @@ fn.leituraArquivo(caminho)
         fn.separarTextoPor(' '),
         fn.removerSeVazio(),
         fn.removerNumeros(),
+        toArray(),
+        first(),
+        fn.agruparElementos()
     )
     .subscribe(console.log)
 
 // const palavrasMaisUsadas = fn.composicao(
 //     fn.mesclarElementos,
-//     fn.agruparElementos,
 //     fn.ordenarPorAtributoNumerico('qtde', 'descendente')
 // )
-
-// palavrasMaisUsadas(caminho)
-//     .then(console.log)

@@ -86,13 +86,18 @@ function separarTextoPor(simbolo) {
     }))
 } 
 
-function agruparElementos(palavras) {
-    return Object.values(palavras.reduce((acumulador, palavra) => {
-        const elemento = palavra.toLowerCase()
-        const qtde = acumulador[elemento] ? acumulador[elemento].qtde + 1 : 1
-        acumulador[elemento] = {palavra: elemento, qtde: qtde}
-        return acumulador
-    }, {}))
+function agruparElementos() {
+    return createPipebleOperator(subscriber => ({
+        next(palavras) {
+            const agrupado = Object.values(palavras.reduce((acumulador, palavra) => {
+                const elemento = palavra.toLowerCase()
+                const qtde = acumulador[elemento] ? acumulador[elemento].qtde + 1 : 1
+                acumulador[elemento] = {palavra: elemento, qtde: qtde}
+                return acumulador
+            }, {}))
+            subscriber.next(agrupado)
+        }
+    }))
 }
 
 function ordenarPorAtributoNumerico(attr, ordem = 'ascendente') {

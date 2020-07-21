@@ -11,7 +11,8 @@ const simbolos = [
 fn.leituraArquivo(caminho)
     .pipe(
         fn.extensaoDosArquivos('.srt'),
-        fn.lerArquivo()
+        fn.lerArquivo(),
+        fn.separarTextoPor('\n')
     )
     .subscribe(console.log)
 

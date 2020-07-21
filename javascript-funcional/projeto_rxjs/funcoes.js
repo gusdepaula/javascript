@@ -77,9 +77,14 @@ function mesclarElementos(array) {
 }
 
 function separarTextoPor(simbolo) {
-    return function(texto){
-        return texto.split(simbolo)
-    }
+    return createPipebleOperator(subscriber => ({
+        next(texto) {
+            texto.split(simbolo).forEach(parte => {
+                subscriber.next(parte)
+            })
+            subscriber.complete()
+        }
+    }))
 } 
 
 function agruparElementos(palavras) {

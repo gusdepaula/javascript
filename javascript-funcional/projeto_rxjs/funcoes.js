@@ -25,22 +25,25 @@ function extensaoDosArquivos(extensao) {
     }))
 }
 
-function lerArquivo(caminho) {
-    return new Promise((resolve, reject) => {
-        try {
-            const conteudo = fs.readFileSync(caminho, {encoding: 'utf-8'})
-            resolve(conteudo.toString())
-        } catch(e) {
-            reject(e)
+function lerArquivo() {
+    return createPipebleOperator(subscriber => ({
+        next(caminho) {
+            try {
+                const conteudo = fs.readFileSync(caminho, {encoding: 'utf-8'})
+                subscriber.next(conteudo.toString())
+                subscriber.complete()
+            } catch(e) {
+                subscriber.error()
+            }
         }
-    })
+    }))
 }
 
-function lerArquivos(caminhos) {
-    return Promise.all(
-        caminhos.map(caminho => lerArquivo(caminho))
-    )
-}
+// function lerArquivo(caminhos) {
+//     return Promise.all(
+//         caminhos.map(caminho => lerArquivo(caminho))
+//     )
+// }
 
 function removerSeVazio(array) {
     return array.filter(element => element.trim())
@@ -115,7 +118,6 @@ module.exports = {
     leituraArquivo,
     extensaoDosArquivos,
     lerArquivo,
-    lerArquivos,
     removerSeVazio,
     removerSePossuir,
     removerNumeros,

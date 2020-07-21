@@ -61,13 +61,15 @@ function removerNumeros() {
 }
 
 function removeSimbolos(simbolos) {
-    return function(array) {
-        return array.map(elemento => {
-            return simbolos.reduce((acumulador, simbolo) => {
+    return createPipebleOperator(subscriber => ({
+        next(texto) {
+            const textoSemSimbolos = simbolos.reduce(
+                (acumulador, simbolo) => {
                 return acumulador.split(simbolo).join('')
-            }, elemento)
-        })
-    }
+            }, texto)
+            subscriber.next(textoSemSimbolos)
+        }
+    }))
 }
 
 function mesclarElementos(array) {
@@ -80,7 +82,6 @@ function separarTextoPor(simbolo) {
             texto.split(simbolo).forEach(parte => {
                 subscriber.next(parte)
             })
-            subscriber.complete()
         }
     }))
 } 
@@ -117,7 +118,6 @@ function createPipebleOperator(operaratorFn) {
 
 
 module.exports = {
-    //composicao,
     leituraArquivo,
     extensaoDosArquivos,
     lerArquivo,

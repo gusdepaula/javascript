@@ -5,7 +5,7 @@ const caminho = path.join(__dirname, '..', 'dados', 'legendas')
 
 const simbolos = [
     '.', '?', '-', ',', '"', '♪', '_', '<i>',
-    '</i>', '\r', '[', ']', '(', ')', '<font color=#ffff00 size=14>wwwtvsubtitlesnet</font>'
+    '</i>', '\r', '[', ']', '(', ')', '<font color=#ffff00 size=14>wwwtvsubtitlesnet</font>', '!'
 ]
 
 fn.leituraArquivo(caminho)
@@ -14,18 +14,16 @@ fn.leituraArquivo(caminho)
         fn.lerArquivo(),
         fn.separarTextoPor('\n'),
         fn.removerSeVazio(),
-        fn.removerNumeros()
+        fn.removerNumeros(),
+        fn.removeSimbolos(simbolos),
+        fn.separarTextoPor(' '),
+        fn.removerSeVazio(),
+        fn.removerNumeros(),
     )
     .subscribe(console.log)
 
 // const palavrasMaisUsadas = fn.composicao(
-//     fn.lerArquivos,
 //     fn.mesclarElementos,
-//     fn.removeSimbolos(simbolos),
-//     fn.mesclarElementos,
-//     fn.separarTextoPor(' '),
-//     fn.removerSeVazio,
-//     fn.removerNumeros,
 //     fn.agruparElementos,
 //     fn.ordenarPorAtributoNumerico('qtde', 'descendente')
 // )

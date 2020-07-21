@@ -31,7 +31,6 @@ function lerArquivo() {
             try {
                 const conteudo = fs.readFileSync(caminho, {encoding: 'utf-8'})
                 subscriber.next(conteudo.toString())
-                subscriber.complete()
             } catch(e) {
                 subscriber.error()
             }

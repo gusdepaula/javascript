@@ -11,4 +11,4 @@ ajax({
         concatAll(),
         map(repo => repo.full_name)
     )
-    .subscribe(console.log)
+    .subscribe(console.log) 

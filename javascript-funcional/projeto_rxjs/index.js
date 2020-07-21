@@ -12,7 +12,8 @@ fn.leituraArquivo(caminho)
     .pipe(
         fn.extensaoDosArquivos('.srt'),
         fn.lerArquivo(),
-        fn.separarTextoPor('\n')
+        fn.separarTextoPor('\n'),
+        fn.removerSeVazio()
     )
     .subscribe(console.log)
 

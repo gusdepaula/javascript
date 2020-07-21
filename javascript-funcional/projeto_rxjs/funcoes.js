@@ -39,14 +39,14 @@ function lerArquivo() {
     }))
 }
 
-// function lerArquivo(caminhos) {
-//     return Promise.all(
-//         caminhos.map(caminho => lerArquivo(caminho))
-//     )
-// }
-
-function removerSeVazio(array) {
-    return array.filter(element => element.trim())
+function removerSeVazio() {
+    return createPipebleOperator(subscriber => ({
+        next(texto) {
+            if(texto.trim()) {
+                subscriber.next(texto)
+            }
+        }
+    }))
 }
 
 function removerSePossuir(texto) {

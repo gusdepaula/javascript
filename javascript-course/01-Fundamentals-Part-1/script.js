@@ -186,7 +186,7 @@ Hint: Use an if/else statement
 
 GOOD LUCK
 
-*/
+
 const markMass = 78;
 const markHeight = 1.69;
 const johnMass = 92;
@@ -205,3 +205,23 @@ if (bmiMark > bmiJohn) {
 } else {
     console.log(`John's BMI(${bmiJohn}) is higher than Mark's(${bmiMark})!`)
 }
+*/
+
+//type conversion
+const inputYear = '1991';
+console.log(Number(inputYear));
+console.log(Number(inputYear) + 18);
+
+console.log(Number('Gustavo'));
+
+console.log(String(23));
+
+//type coercion
+console.log('I am ' + 23 + ' years old.')
+console.log('23' - '10' - 3);
+console.log('23' / '2');
+console.log('23' > '18');
+
+let n = '1' + 1;
+n = n - 1;
+console.log(n);

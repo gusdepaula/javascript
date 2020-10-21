@@ -104,18 +104,18 @@ m tall.
 m tall.
 GOOD LUCK
 
-*/
+
 //Data 1
-// let markMass = 78;
-// let markHeight = 1.69;
-// let johnMass = 92;
-// let johnHeight = 1.95;
+let markMass = 78;
+let markHeight = 1.69;
+let johnMass = 92;
+let johnHeight = 1.95;
 
-// const bmiMark = markMass / markHeight ** 2;
-// const bmiJohn = johnMass / (johnHeight * johnHeight);
+const bmiMark = markMass / markHeight ** 2;
+const bmiJohn = johnMass / (johnHeight * johnHeight);
 
-// console.log(`BMI Mark is ${bmiMark}`);
-// console.log(`BMI John is ${bmiJohn}`);
+console.log(`BMI Mark is ${bmiMark}`);
+console.log(`BMI John is ${bmiJohn}`);
 
 
 //Data 2
@@ -129,3 +129,25 @@ const bmiJohn = johnMass / johnHeight ** 2;
 
 console.log(`BMI Mark 2 is ${bmiMark}`);
 console.log(`BMI John 2 is ${bmiJohn}`);
+*/
+
+const firstName = 'Gustavo';
+const job = 'Frontend';
+const birthYear = 1983;
+const year = 2020;
+
+const gustavo = "I'm " + firstName + ', a ' + (year - birthYear) + ' years old ' + job + '!';
+console.log(gustavo);
+
+const gustavoNew = `I'm ${firstName}, a ${year - birthYear} years old ${job}!`;
+console.log(gustavoNew);
+
+console.log(`Just a regular string...`)
+
+console.log('String with \n\
+multiple \n\
+lines');
+
+console.log(`String
+multiple
+lines`)

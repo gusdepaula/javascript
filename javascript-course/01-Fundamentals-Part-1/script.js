@@ -288,8 +288,8 @@ Test data:
 § Data 1: Dolphins score 96, 108 and 89. Koalas score 88, 91 and 110
 § Data Bonus 1: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 123
 § Data Bonus 2: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 106
-GOOD LUCK 
-*/
+GOOD LUCK
+
 
 //Data 1
 // const scoreDolphins = (96 + 109 + 89)/3;
@@ -314,4 +314,45 @@ if (scoreDolphins >= 100 && scoreKoalas >= 100) {
     }
 } else {
     console.log('None of teams win!');
+}
+*/
+
+const day = 'Monday';
+
+switch (day) {
+    case 'Monday':
+        console.log('Plan course structure');
+        console.log('Go to coding meetup');
+        break;
+    case 'Tuesday':
+        console.log('Prepare theory videos');
+        break;
+    case 'Wednesday':
+    case 'Thursday':
+        console.log('Write code examples');
+        break;
+    case 'Friday':
+        console.log('Record videos');
+        break;
+    case 'Saturday':
+    case 'Sunday':
+        console.log('Enjou the weekend');
+        break;
+    default:
+        break;
+}
+
+if (day == 'Monday') {
+    console.log('Plan course structure');
+    console.log('Go to coding meetup');
+} else if (day == 'Tuesday') {
+    console.log('Prepare theory videos');
+} else if (day == 'Wednesday' || day == 'Thursday') {
+    console.log('Write code examples');
+} else if (day == 'Friday') {
+    console.log('Record videos');
+} else if (day == 'Saturday' || day == 'Sunday') {
+    console.log('Enjou the weekend');
+} else {
+    console.log('Not a valid day!');
 }

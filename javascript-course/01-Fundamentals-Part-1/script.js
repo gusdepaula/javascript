@@ -225,7 +225,7 @@ console.log('23' > '18');
 let n = '1' + 1;
 n = n - 1;
 console.log(n);
-*/
+
 
 const age = '18';
 if (age === 18) console.log('You just became an adult (strict)');
@@ -247,3 +247,26 @@ if (favourite == 13) {
 }
 
 if (favourite !== 13) console.log('Why not 13?');
+*/
+
+const hasDriverLicense = true;
+const hasGoodVision = true;
+
+console.log(hasDriverLicense && hasGoodVision);
+console.log(hasDriverLicense || hasGoodVision);
+console.log(!hasDriverLicense);
+
+// if (hasDriverLicense && hasGoodVision) {
+//     console.log('Sarah is able to drive!');
+// } else {
+//     console.log('Someone else should drive...')
+// }
+
+const isTired = true;
+console.log(hasDriverLicense && hasGoodVision && isTired);
+
+if (hasDriverLicense && hasGoodVision && !isTired) {
+    console.log('Sarah is able to drive!');
+} else {
+    console.log('Someone else should drive...')
+}

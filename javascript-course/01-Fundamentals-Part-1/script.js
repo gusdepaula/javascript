@@ -205,7 +205,7 @@ if (bmiMark > bmiJohn) {
 } else {
     console.log(`John's BMI(${bmiJohn}) is higher than Mark's(${bmiMark})!`)
 }
-*/
+
 
 //type conversion
 const inputYear = '1991';
@@ -225,3 +225,25 @@ console.log('23' > '18');
 let n = '1' + 1;
 n = n - 1;
 console.log(n);
+*/
+
+const age = '18';
+if (age === 18) console.log('You just became an adult (strict)');
+
+if (age == 18) console.log('You just became an adult (loose)');
+
+const favourite = prompt("What's your favourite number?");
+console.log(favourite);
+console.log(typeof favourite);
+
+if (favourite == 13) {
+    console.log("Cool! 13 is an amazing number!");
+} else if (favourite == 7) {
+    console.log("7 is an amazing number!");
+} else if (favourite == 9) {
+    console.log("9 is an amazing number!");
+} else {
+    console.log("Number is not 13 or 7 or 9");
+}
+
+if (favourite !== 13) console.log('Why not 13?');

@@ -400,7 +400,7 @@ console.log(`${john.calcBMI() > mark.calcBMI() ? john.fullName : mark.fullName}'
 for (let rep = 1; rep <= 10; rep++) {
     console.log(`Lifiting weights repetition ${rep}`);
 }
-*/
+
 
 const gustavo = [
     'Gustavo',
@@ -447,4 +447,30 @@ for (let index = 0; index < gustavo.length; index++) {
         break;
     }
     console.log(gustavo[index], typeof gustavo[index]);
+}
+*/
+
+const gustavo = [
+    'Gustavo',
+    'de Paula',
+    2037 - 1983,
+    'frontend',
+    ['Norberto', 'Tremendo', 'Pelé'],
+    true
+];
+
+for (let index = gustavo.length - 1; index >= 0; index--) {
+    console.log(index, gustavo[index]);
+}
+
+for (let exercise = 1; exercise < 4; exercise++) {
+    console.log(`------------------ Starting exercise ${exercise}`)
+
+    for (let rep = 0; rep < 6; rep++) {
+        console.log(`Exercise ${exercise}: Lifiting weight repetition ${rep}`);
+    }
+}
+
+for (let rep = 0; rep < 6; rep++) {
+    console.log(`Exercise ${exercise}: Lifiting weight repetition ${rep}`);
 }

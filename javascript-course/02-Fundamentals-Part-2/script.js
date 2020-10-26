@@ -365,7 +365,7 @@ tall.
 
 GOOD LUCK
 
-*/
+
 
 const mark = {
     fullName: 'Mark Miller',
@@ -391,4 +391,12 @@ if (john.calcBMI() > mark.calcBMI()) {
     console.log(`Mark's BMI (${mark.calcBMI()}) is higher than John's BMI (${john.calcBMI()})!`)
 }
 
-console.log(`${john.calcBMI() > mark.calcBMI() ? john.fullName : mark.fullName}'s BMI (${john.calcBMI() > mark.calcBMI() ? john.calcBMI() : mark.calcBMI()}) is higher than ${john.calcBMI() < mark.calcBMI() ? john.fullName : mark.fullName}'s BMI (${john.calcBMI() < mark.calcBMI() ? john.calcBMI() : mark.calcBMI()})`)
+console.log(`${john.calcBMI() > mark.calcBMI() ? john.fullName : mark.fullName}'s BMI (${john.calcBMI() > mark.calcBMI() ? john.calcBMI() : mark.calcBMI()}) is higher than ${john.calcBMI() < mark.calcBMI() ? john.fullName : mark.fullName}'s BMI (${john.calcBMI() < mark.calcBMI() ? john.calcBMI() : mark.calcBMI()})`);
+*/
+
+// console.log('Lifiting weights repetition 1');
+
+//for loop keeps running while condition is TRUE
+for (let rep = 1; rep <= 10; rep++) {
+    console.log(`Lifiting weights repetition ${rep}`);
+}

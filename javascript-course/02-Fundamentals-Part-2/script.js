@@ -448,7 +448,7 @@ for (let index = 0; index < gustavo.length; index++) {
     }
     console.log(gustavo[index], typeof gustavo[index]);
 }
-*/
+
 
 const gustavo = [
     'Gustavo',
@@ -470,7 +470,24 @@ for (let exercise = 1; exercise < 4; exercise++) {
         console.log(`Exercise ${exercise}: Lifiting weight repetition ${rep}`);
     }
 }
+*/
 
-for (let rep = 0; rep < 6; rep++) {
-    console.log(`Exercise ${exercise}: Lifiting weight repetition ${rep}`);
+// for (let rep = 1; rep < 10; rep++) {
+//     console.log(`Lifiting weight repetition ${rep}`);
+// }
+
+let rep = 1;
+while (rep <= 10) {
+    //console.log(`WHILE: Lifiting weight repetition ${rep}`);
+    rep++;
+}
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+
+while (dice !== 6) {
+    console.log(`You rolled a ${dice}`);
+    dice = Math.trunc(Math.random() * 6) + 1;
+    if (dice === 6) {
+        console.log('Loop is about to end...')
+    }
 }

@@ -250,7 +250,7 @@ values (so don't store the tip values in separate variables first, but right in 
 array)
 
 GOOD LUCK
-*/
+
 
 function calcTip(value) {
     if (value >= 50 && value <= 300) {
@@ -268,3 +268,20 @@ console.log(`The tips are ${tips}`);
 
 const total = [tips[0] + bills[0], tips[1] + bills[1], tips[2] + bills[2]];
 console.log(`The total is ${total}`);
+*/
+
+const gustavoArray = [
+    'Gustavo',
+    'de Paula',
+    2037 - 1983,
+    'frontend',
+    ['Norberto', 'Tremendo', 'Pelé']
+];
+
+const gustavo = {
+    firstName: 'Gustavo',
+    lastName: 'de Paula',
+    age: 2037 - 1983,
+    job: 'frontend',
+    friend: ['Norberto', 'Tremendo', 'Pelé']
+};

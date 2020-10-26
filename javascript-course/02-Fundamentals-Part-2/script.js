@@ -392,11 +392,59 @@ if (john.calcBMI() > mark.calcBMI()) {
 }
 
 console.log(`${john.calcBMI() > mark.calcBMI() ? john.fullName : mark.fullName}'s BMI (${john.calcBMI() > mark.calcBMI() ? john.calcBMI() : mark.calcBMI()}) is higher than ${john.calcBMI() < mark.calcBMI() ? john.fullName : mark.fullName}'s BMI (${john.calcBMI() < mark.calcBMI() ? john.calcBMI() : mark.calcBMI()})`);
-*/
+
 
 // console.log('Lifiting weights repetition 1');
 
 //for loop keeps running while condition is TRUE
 for (let rep = 1; rep <= 10; rep++) {
     console.log(`Lifiting weights repetition ${rep}`);
+}
+*/
+
+const gustavo = [
+    'Gustavo',
+    'de Paula',
+    2037 - 1983,
+    'frontend',
+    ['Norberto', 'Tremendo', 'Pelé'],
+    true
+];
+
+const types = [];
+
+for (let index = 0; index < gustavo.length; index++) {
+    // Reading from gustavo array
+    console.log(gustavo[index], typeof gustavo[index]);
+
+    // Filling types array
+    //types[index] = typeof gustavo[index]
+    types.push(typeof gustavo[index])
+}
+
+console.log(types);
+
+const years = [1991, 2007, 1969, 2020];
+const ages = [];
+
+for (let index = 0; index < years.length; index++) {
+    ages.push(2037 - years[index]);
+}
+console.log(ages);
+
+//continue and break
+console.log('--- ONLY STRINGS --- ')
+for (let index = 0; index < gustavo.length; index++) {
+    if (typeof gustavo[index] !== 'string') {
+        continue;
+    }
+    console.log(gustavo[index], typeof gustavo[index]);
+}
+
+console.log('--- BREAK WITH NUMBER --- ')
+for (let index = 0; index < gustavo.length; index++) {
+    if (typeof gustavo[index] === 'number') {
+        break;
+    }
+    console.log(gustavo[index], typeof gustavo[index]);
 }

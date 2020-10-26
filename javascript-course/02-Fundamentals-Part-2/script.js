@@ -268,7 +268,7 @@ console.log(`The tips are ${tips}`);
 
 const total = [tips[0] + bills[0], tips[1] + bills[1], tips[2] + bills[2]];
 console.log(`The total is ${total}`);
-*/
+
 
 const gustavoArray = [
     'Gustavo',
@@ -277,6 +277,7 @@ const gustavoArray = [
     'frontend',
     ['Norberto', 'Tremendo', 'Pelé']
 ];
+*/
 
 const gustavo = {
     firstName: 'Gustavo',
@@ -285,3 +286,28 @@ const gustavo = {
     job: 'frontend',
     friend: ['Norberto', 'Tremendo', 'Pelé']
 };
+console.log(gustavo);
+
+console.log(gustavo.lastName);
+console.log(gustavo['lastName']);
+
+const nameKey = 'Name';
+console.log(gustavo['first' + nameKey]);
+console.log(gustavo['last' + nameKey]);
+
+const interestIn = prompt('What do you want know about Gustavo? Choose between firstName, lastName, age, job and friends');
+
+if (gustavo[interestIn]) {
+    console.log(gustavo[interestIn]);
+} else {
+    console.log(`Wrong request! Choose between firstName, lastName, age, job and friends`)
+}
+
+gustavo.location = 'Brazil';
+gustavo['instagram'] = '@gusdipaula';
+console.log(gustavo);
+
+// Challenge
+// Gustavo has 3 friends, and the his best friend is called Norberto
+
+console.log(`${gustavo.firstName} has ${gustavo.friend.length} friends, and the his best friend is called ${gustavo.friend[0]}`);

@@ -277,7 +277,7 @@ const gustavoArray = [
     'frontend',
     ['Norberto', 'Tremendo', 'Pelé']
 ];
-*/
+
 
 const gustavo = {
     firstName: 'Gustavo',
@@ -310,4 +310,39 @@ console.log(gustavo);
 // Challenge
 // Gustavo has 3 friends, and the his best friend is called Norberto
 
-console.log(`${gustavo.firstName} has ${gustavo.friend.length} friends, and the his best friend is called ${gustavo.friend[0]}`);
+console.log(`${gustavo.firstName} has ${gustavo.friend.length} friends, and the his best friend is called ${gustavo.friend[0]}`);*/
+
+const gustavo = {
+    firstName: 'Gustavo',
+    lastName: 'de Paula',
+    birthYear: 1983,
+    job: 'frontend',
+    friend: ['Norberto', 'Tremendo', 'Pelé'],
+    hasDriversLicense: true,
+    // calcAge: function (birthYear) {
+    //     return 2037 - birthYear;
+    // }
+    // calcAge: function () {
+    //     return 2037 - this.birthYear;
+    // }
+    calcAge: function () {
+        this.age = 2037 - this.birthYear;
+        return this.age;
+    },
+
+    getSummary: function () {
+        return `${this.firstName} is a ${this.calcAge()}-year old ${this.job} and he has ${this.hasDriversLicense ? 'a' : 'no '} driver's license`
+    }
+};
+
+
+console.log(gustavo.calcAge());
+
+console.log(gustavo.age);
+console.log(gustavo.age);
+console.log(gustavo.age);
+
+// Challenge
+// "Gustavo is a 54-year old frontend, and he has a driver's licence"
+console.log(`${gustavo.firstName} is a ${gustavo.calcAge()}-year old ${gustavo.job} and he has ${gustavo.hasDriversLicense ? '' : 'not '}a driver's license`);
+console.log(gustavo.getSummary());

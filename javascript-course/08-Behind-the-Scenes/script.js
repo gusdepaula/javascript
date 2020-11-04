@@ -37,7 +37,7 @@ const firstName = 'Gustavo';
 calcAge(1983);
 // console.log(age);
 // printAge();
- */
+
 
 // Variables
 console.log(me);
@@ -82,3 +82,40 @@ const z = 3;
 console.log(x === window.x);
 console.log(y === window.y);
 console.log(z === window.z);
+ */
+
+console.log(this);
+
+const calcAge = function (birthYear) {
+  console.log(2037 - birthYear);
+  //   console.log(this);
+};
+
+calcAge(1983);
+
+const calcAgeArrow = birthYear => {
+  console.log(2037 - birthYear);
+  //   console.log(this);
+};
+
+calcAgeArrow(1983);
+
+const gustavo = {
+  year: 1983,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+  },
+};
+
+gustavo.calcAge();
+
+const matilda = {
+  year: 2017,
+};
+
+matilda.calcAge = gustavo.calcAge;
+matilda.calcAge();
+
+const f = gustavo.calcAge;
+f();

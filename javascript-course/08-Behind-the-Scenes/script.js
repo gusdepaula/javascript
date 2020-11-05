@@ -119,7 +119,7 @@ matilda.calcAge();
 
 const f = gustavo.calcAge;
 f();
- */
+
 
 // var firstName = 'Matilda';
 
@@ -167,3 +167,19 @@ var addArrow = (a, b) => {
   return a + b;
 };
 addArrow(2, 5, 8);
+ */
+
+let age = 35;
+let oldAge = age;
+age = 31;
+console.log(age);
+console.log(oldAge);
+
+const me = {
+  name: 'Gustavo',
+  age: 35,
+};
+const friend = me;
+friend.age = 27;
+console.log('Friend:', friend);
+console.log('Me', me);

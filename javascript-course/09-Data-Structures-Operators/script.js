@@ -46,7 +46,14 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
 
+// Nullish: null and undefinied (NOT 0 or '')
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
+/*
 console.log('---------OR---------');
 // Use ANY data type, return ANY data type, short-circuting
 console.log(3 || 'Gustavo');
@@ -74,7 +81,7 @@ if (restaurant.orderPizza) {
 }
 
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
-/*
+
 // 1) Destructuring
 
 // SPREAD, because on RIGHT side of =

@@ -85,6 +85,49 @@ const game = {
   },
 };
 
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+
+console.log(ordersSet);
+
+// Loggi Example
+// const fruits1 = ['Banana', 'Apple', 'Pineapple', 'Watermelon'];
+// const fruits2 = ['Banana', 'Melon', 'Orange', 'Strawberry'];
+
+// const allFruits = [...fruits1, ...fruits2];
+// console.log(allFruits);
+
+// const fruitsUnique = [...new Set(allFruits)];
+// console.log(fruitsUnique);
+
+console.log(new Set('Gustavo'));
+
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+console.log(ordersSet);
+
+for (const order of ordersSet) {
+  console.log(order);
+}
+
+// Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+console.log(new Set('gustavodepaula').size);
 /*
 ////////////////////////////////
 // Coding Challenge #2
@@ -114,7 +157,7 @@ game, it will look like this:
  Lewandowski: 2
 }
 GOOD LUCK
-*/
+
 // 1.
 for (const [i, el] of game.scored.entries()) {
   console.log(`Goal ${i + 1}: ${el}`);

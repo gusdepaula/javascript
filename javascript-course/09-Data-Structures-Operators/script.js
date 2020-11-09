@@ -135,6 +135,13 @@ for (const [team, odd] of Object.entries(game.odds)) {
   console.log(`Odd of ${teamStr} ${odd}`);
 }
 
+// BONUS
+const scorers = {};
+for (const player of game.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+}
+console.log(scorers);
+
 // Odd of victory Bayern Munich: 1.33
 // Odd of draw: 3.25
 // Odd of victory Borrussia Dortmund: 6.5

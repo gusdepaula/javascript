@@ -46,6 +46,21 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+// for (const item of menu.entries()) {
+//   console.log(`${item[0] + 1}:${item[1]}`);
+// }
+
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}:${el}`);
+}
+
+// console.log([...menu.entries()]);
+
 /*
 //////////////////////////////////////////////////////////////////
 Coding Challenge #1
@@ -79,7 +94,7 @@ Test data for 6.: First, use players 'Davies', 'Muller', 'Lewandowski' and 'Kimm
 Then, call the function again with players from game.scored
 
 GOOD LUCK
-*/
+
 
 const game = {
   team1: 'Bayern Munich',

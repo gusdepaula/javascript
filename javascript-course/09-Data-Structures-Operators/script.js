@@ -84,7 +84,43 @@ const game = {
     team2: 6.5,
   },
 };
+const question = new Map([
+  ['question', 'What is the best programming language in the World?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'Javascript'],
+  ['Correct', 3],
+  [true, 'Correct 🎉'],
+  [false, 'Try again!'],
+]);
 
+console.log(question);
+
+//Convert Object to Map
+console.log(Object.entries(openingHours));
+const hoursMap = new Map(Object.entries(openingHours));
+console.log(hoursMap);
+
+// Quiz app
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') {
+    console.log(`Answer ${key}: ${value}`);
+  }
+}
+//const answer = Number(prompt('Your answer'));
+const answer = 3;
+console.log(answer);
+
+console.log(question.get(question.get('Correct') === answer));
+
+// Convert Map to Array
+console.log([...question]);
+console.log([...question.entries()]);
+console.log([...question.keys()]);
+console.log([...question.values()]);
+
+/*
 const rest = new Map();
 rest.set('name', 'Classico Italiano');
 rest.set(1, 'Firenze, Italy');
@@ -114,7 +150,7 @@ console.log(rest.size);
 
 console.log(rest.get(arr));
 
-/*
+
 // Sets
 const ordersSet = new Set([
   'Pasta',

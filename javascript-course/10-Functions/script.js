@@ -120,7 +120,7 @@ const lufthansa = {
     console.log(
       `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
     );
-    this.bookings.push({ flight: `${this.iataCode}` });
+    this.bookings.push({ flight: `${this.iataCode}`, name: `${name}` });
   },
 };
 
@@ -155,3 +155,47 @@ book.call(swiss, 583, 'Marie Cooper');
 const flightData = [583, 'George Cooper'];
 book.apply(swiss, flightData);
 console.log(swiss);
+
+// The bind Method
+// book.call(eurowings, 23, 'Sarah Willians');
+
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+bookEW(23, 'Steven Willians');
+
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('Gustavo de Paula');
+bookEW23('Martha Cooper');
+
+// With Event Listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+  this.planes++;
+  console.log(this.planes);
+};
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+// Partial application
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+// addVAT = value => value + value * 0.23;
+
+console.log(addVAT(100));
+console.log(addVAT(23));
+
+// Challenge Functions Returning Functions
+const addVATR = function (value) {
+  return function (rate) {
+    console.log(`addVAT: ${value + value * rate}`);
+  };
+};
+
+addVATR(100)(0.23);

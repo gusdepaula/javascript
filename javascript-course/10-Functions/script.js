@@ -240,7 +240,7 @@ Test data for bonus:
 § Data 1: [5, 2, 3]
 § Data 2: [1, 5, 3, 9, 6, 1]
 Hints: Use many of the tools you learned about in this and the last section
-*/
+
 
 const poll = {
   question: 'What is your favourite programming language?',
@@ -282,3 +282,27 @@ poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
 
 // [5, 2, 3]
 // [1, 5, 3, 9, 6, 1]
+*/
+
+const runOnce = function () {
+  console.log('This will never never run again');
+};
+
+runOnce();
+
+// IIFE
+(function () {
+  console.log('This will never never run again');
+  const isPrivate = 23;
+})();
+
+//console.log(isPrivate);
+
+(() => console.log('This will ALSO never never run again'))();
+
+{
+  const isPrivate = 23;
+  var notPrivate = 46;
+}
+// console.log(isPrivate);
+console.log(notPrivate);

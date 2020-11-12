@@ -282,7 +282,7 @@ poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
 
 // [5, 2, 3]
 // [1, 5, 3, 9, 6, 1]
-*/
+
 
 const runOnce = function () {
   console.log('This will never never run again');
@@ -306,3 +306,21 @@ runOnce();
 }
 // console.log(isPrivate);
 console.log(notPrivate);
+*/
+
+// Closures
+const secureBooking = function () {
+  let passengerCount = 0;
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+
+booker();
+booker();
+booker();
+
+console.dir(booker);

@@ -81,6 +81,19 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const createUsernames = function (accs) {
+  accs.forEach(function (account) {
+    account.username = account.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+createUsernames(accounts);
+console.log(accounts);
+
 //console.log(containerMovements.innerHTML);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -219,7 +232,7 @@ console.log(`--------------Data 1--------------`);
 checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 console.log(`--------------Data 2--------------`);
 checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
-*/
+
 
 const eurToUsd = 1.1;
 
@@ -244,3 +257,4 @@ const movementsDescripitions = movements.map(
 );
 
 console.log(movementsDescripitions);
+*/

@@ -136,6 +136,7 @@ btnScrollTo.addEventListener('click', function(e){
 
 });
 
+/*
 const h1 = document.querySelector('h1');
 
 const alertH1 = function(e){
@@ -152,3 +153,27 @@ setTimeout(() => {
 // h1.onmouseenter = function(e){
 //   alert('onmouseenter: Great! You are reading the heading :D')
 // };
+
+*/
+
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+const randomColor = () => `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
+console.log(randomColor(0, 255));
+
+document.querySelector('.nav__link').addEventListener('click', function(e){
+  this.style.backgroundColor = randomColor();
+  console.log('link', e.target, e.currentTarget);
+
+  // Stop propagation
+  // e.stopPropagation();
+})
+
+document.querySelector('.nav__links').addEventListener('click', function(e){
+  this.style.backgroundColor = randomColor();
+  console.log('container', e.target, e.currentTarget);
+})
+
+document.querySelector('.nav').addEventListener('click', function(e){
+  this.style.backgroundColor = randomColor();
+  console.log('nav', e.target, e.currentTarget);
+})

@@ -9,7 +9,7 @@ const Person = function(firstName, birthYear) {
     //     console.log(2037 - this.birthYear);
     // }
 
-    
+
 }
 
 const gustavo = new Person('Gustavo', 1983);
@@ -20,3 +20,25 @@ const jack = new Person('Jack', 1975);
 console.log(matilda, jack);
 
 console.log(gustavo instanceof Person);
+
+// Prototypes
+Person.prototype.calcAge = function(){
+    console.log(2037 - this.birthYear);
+};
+
+gustavo.calcAge();
+matilda.calcAge();
+jack.calcAge();
+
+console.log(gustavo.__proto__);
+console.log(gustavo.__proto__ === Person.prototype);
+
+console.log(Person.prototype.isPrototypeOf(gustavo));
+console.log(Person.prototype.isPrototypeOf(matilda));
+console.log(Person.prototype.isPrototypeOf(Person));
+
+Person.prototype.species = 'Home Sapiens';
+console.log(gustavo.species, matilda.species);
+
+console.log(gustavo.hasOwnProperty('firstName'));
+console.log(gustavo.hasOwnProperty('species'));

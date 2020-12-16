@@ -1,6 +1,6 @@
 'use strict';
 
-
+/* 
 const Person = function(firstName, birthYear) {
     this.firstName = firstName;
     this.birthYear = birthYear
@@ -71,6 +71,7 @@ console.log(arr.unique());
 
 const h1 = document.querySelector('h1');
 console.dir( x => x + 1);
+*/
 ///////////////////////////////////////
 // Coding Challenge #1
 
@@ -226,7 +227,7 @@ sarah.calcAge(); */
 DATA CAR 1: 'Ford' going at 120 km/h
 
 GOOD LUCK 😀
-*/
+
 
 class CarCl {
     constructor(make, speed) {
@@ -258,3 +259,42 @@ console.log(ford.speedUS);
 console.log(ford);
 ford.speedUS = 50;
 console.log(ford);
+
+*/
+
+const Person = function(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+}
+
+Person.prototype.calcAge = function(){
+    console.log(2037 - this.birthYear);
+};
+
+const Student = function(firstName, birthYear, course) {
+    Person.call(this, firstName, birthYear);
+    this.course = course;
+};
+
+// Linking prototypes
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.introduce = function(){
+    console.log(`My name is ${this.firstName} and I study ${this.course}`);
+}
+
+const mike = new Student('Mike', 2020, 'Computer Science');
+console.log(mike);
+mike.introduce();
+mike.calcAge();
+
+console.log(mike.__proto__);
+console.log(mike.__proto__.__proto__);
+
+console.log(mike instanceof Student);
+console.log(mike instanceof Person);
+console.log(mike instanceof Object);
+
+
+Student.prototype.constructor = Student;
+console.log(Student.prototype.constructor);

@@ -32,7 +32,7 @@ const getCountryData = function (country) {
     countriesContainer.style.opacity = 1;
   });
 };
-
+*/
 
 const renderCountry = function (data, className = '') {
   const html = `
@@ -52,7 +52,7 @@ const renderCountry = function (data, className = '') {
   countriesContainer.insertAdjacentHTML('beforeend', html);
   countriesContainer.style.opacity = 1;
 };
-
+/*
 const getCountryAndNeighbour = function (country) {
   // Ajax call country 1
   const request = new XMLHttpRequest();
@@ -85,7 +85,7 @@ const getCountryAndNeighbour = function (country) {
 };
 
 getCountryAndNeighbour('brazil');
-*/
+
 
 // const request = new XMLHttpRequest();
 //   request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
@@ -93,3 +93,23 @@ getCountryAndNeighbour('brazil');
 
 const request = fetch('https://restcountries.eu/rest/v2/name/brazil');
 console.log(request);
+*/
+
+// const getCountryData = function (country) {
+//   fetch(`https://restcountries.eu/rest/v2/name/${country}`)
+//     .then(function (response) {
+//       console.log(response);
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//       renderCountry(data[0]);
+//     });
+// };
+
+const getCountryData = function (country) {
+  fetch(`https://restcountries.eu/rest/v2/name/${country}`)
+    .then(response => response.json())
+    .then(data => renderCountry(data[0]));
+};
+getCountryData('brazil');

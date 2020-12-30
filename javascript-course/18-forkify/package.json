@@ -2,14 +2,10 @@
   "name": "forkify",
   "version": "1.0.0",
   "description": "Recipe application",
-  "main": "index.html",
+  "default": "index.html",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gusdepaula/javascript/tree/master/javascript-course/18-forkify"
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "author": "Gustavo de Paula",
   "license": "ISC",

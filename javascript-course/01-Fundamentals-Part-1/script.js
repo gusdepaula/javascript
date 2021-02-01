@@ -226,7 +226,30 @@ let n = '1' + 1;
 n = n - 1;
 console.log(n);
 
+*/
 
+// 5 falsy values: 0, '', undefined, null, NaN
+console.log(Boolean(0));
+console.log(Boolean(undefined));
+console.log(Boolean("Gustavo"));
+console.log(Boolean({}));
+console.log(Boolean(""));
+
+const money = 100;
+if (money) {
+  console.log("Don't spend it all ;)");
+} else {
+  console.log("You should get a job!");
+}
+
+let height = 123;
+if (height) {
+  console.log("YAY! Height is defined");
+} else {
+  console.log("Height is UNDEFINED");
+}
+
+/*
 const age = '18';
 if (age === 18) console.log('You just became an adult (strict)');
 
@@ -398,7 +421,7 @@ Hints:
 § To calculate 20 % of a value, simply multiply it by 20 / 100 = 0.2
 § Value X is between 50 and 300, if it's >= 50 && <= 300
 GOOD LUCK
-*/
+
 
 // const billValue = 275;
 // const billValue = 40;
@@ -414,3 +437,4 @@ const billValue = 430;
 const tips = billValue >= 50 && billValue <= 300 ? billValue * 0.2 : billValue * 0.15;
 
 console.log(`The bill was ${billValue}, the tip was ${tips}, and the total value ${billValue + tips}`);
+*/

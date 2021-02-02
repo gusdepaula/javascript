@@ -649,6 +649,19 @@ labelBalance.addEventListener('click', function () {
   console.log(movementsUI2);
 });
 
+*/
+//////////////////////////////////////
+// Array Methods Practice
+
+// 1.
+const bankDepositSum = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0)
+  .reduce((sum, cur) => sum + cur, 0);
+
+console.log(bankDepositSum);
+
+/*
 //////////////////////////////////////
 Coding Challenge #4
 Julia and Kate are still studying dogs, and this time they are studying if dogs are
@@ -690,7 +703,7 @@ lecture to choose between them �
 current > (recommended * 0.90) && current < (recommended *
 1.10). Basically, the current portion should be between 90% and 110% of the
 recommended portion.
-*/
+
 
 const dogs = [
   { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
@@ -771,3 +784,4 @@ const dogsSorted = dogs
   .slice()
   .sort((a, b) => a.recommendedFood - b.recommendedFood);
 console.log(dogsSorted);
+*/

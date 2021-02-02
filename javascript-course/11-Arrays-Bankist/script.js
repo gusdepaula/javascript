@@ -688,6 +688,24 @@ const { deposits, withdrawls } = accounts
     },
     { deposits: 0, withdrawls: 0 }
   );
+console.log(deposits, withdrawls);
+
+// 4.
+// this is a nice title -> This Is a Nice Title
+const convertTitleCase = function (title) {
+  const capitalize = str => str[0].toUpperCase() + str.slice(1);
+  const exceptions = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with', 'and'];
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map(word => (exceptions.includes(word) ? word : capitalize(word)))
+    .join(' ');
+  return titleCase;
+};
+
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this is a LONG nice title but not too long'));
+console.log(convertTitleCase('and here is another title with an EXAMPLE'));
 
 /*
 //////////////////////////////////////

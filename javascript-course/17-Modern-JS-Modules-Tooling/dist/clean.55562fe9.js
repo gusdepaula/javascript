@@ -118,13 +118,15 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"clean.js":[function(require,module,exports) {
+'strict mode';
+
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-var budget = [{
+var budget = Object.freeze([{
   value: 250,
   description: 'Sold old TV 📺',
   user: 'gustavo'
@@ -156,54 +158,45 @@ var budget = [{
   value: -1800,
   description: 'New Laptop 💻',
   user: 'gustavo'
-}];
-var limits = {
+}]);
+var spendingLimits = Object.freeze({
   gustavo: 1500,
   matilda: 100
+});
+spendingLimits.jay = 200;
+
+var getLimit = function getLimit(user) {
+  var _spendingLimits$user;
+
+  return (_spendingLimits$user = spendingLimits === null || spendingLimits === void 0 ? void 0 : spendingLimits[user]) !== null && _spendingLimits$user !== void 0 ? _spendingLimits$user : 0;
 };
 
-var add = function add(value, description, user) {
+var addExpense = function addExpense(value, description, user) {
   if (!user) user = 'gustavo';
   user = user.toLowerCase();
-  var lim;
 
-  if (limits[user]) {
-    lim = limits[user];
-  } else {
-    lim = 0;
-  }
-
-  if (value <= lim) {
+  if (value <= getLimit(user)) {
     budget.push({
       value: -value,
       description: description,
       user: user
     });
   }
-};
+}; // addExpense(10, 'Pizza 🍕');
+// addExpense(100, 'Going to movies 🍿', 'Matilda');
+// addExpense(200, 'Stuff', 'Jay');
 
-add(10, 'Pizza 🍕');
-add(100, 'Going to movies 🍿', 'Matilda');
-add(200, 'Stuff', 'Jay');
-console.log(budget);
 
-var check = function check() {
+var checkExpenses = function checkExpenses() {
   var _iterator = _createForOfIteratorHelper(budget),
       _step;
 
   try {
     for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var el = _step.value;
-      var lim;
+      var entry = _step.value;
 
-      if (limits[el.user]) {
-        lim = limits[el.user];
-      } else {
-        lim = 0;
-      }
-
-      if (el.value < -lim) {
-        el.flag = 'limit';
+      if (entry.value < -getLimit(entry.user)) {
+        entry.flag = 'limit';
       }
     }
   } catch (err) {
@@ -213,10 +206,9 @@ var check = function check() {
   }
 };
 
-check();
-console.log(budget);
+checkExpenses();
 
-var bigExpenses = function bigExpenses(limit) {
+var logBigExpenses = function logBigExpenses(bigLimit) {
   var output = '';
 
   var _iterator2 = _createForOfIteratorHelper(budget),
@@ -224,11 +216,8 @@ var bigExpenses = function bigExpenses(limit) {
 
   try {
     for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-      var el = _step2.value;
-
-      if (el.value <= -limit) {
-        output += el.description.slice(-2) + ' / '; // Emojis are 2 chars
-      }
+      var entry = _step2.value;
+      output += entry.value <= -bigLimit ? "".concat(entry.description.slice(-2), " /") : '';
     }
   } catch (err) {
     _iterator2.e(err);
@@ -240,6 +229,9 @@ var bigExpenses = function bigExpenses(limit) {
 
   console.log(output);
 };
+
+console.log(budget);
+logBigExpenses(500);
 },{}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

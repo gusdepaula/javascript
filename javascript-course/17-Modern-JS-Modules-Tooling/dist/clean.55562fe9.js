@@ -176,23 +176,21 @@ var getLimit = function getLimit(user) {
   var _spendingLimits$user;
 
   return (_spendingLimits$user = spendingLimits === null || spendingLimits === void 0 ? void 0 : spendingLimits[user]) !== null && _spendingLimits$user !== void 0 ? _spendingLimits$user : 0;
-};
+}; // Pure function
+
 
 var addExpense = function addExpense(state, limits, value, description) {
   var user = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'gustavo';
-  if (!user) user = 'gustavo';
   var cleanUser = user.toLowerCase();
-
-  if (value <= getLimit(user)) {
-    return [].concat(_toConsumableArray(state), [{
-      value: -value,
-      description: description,
-      user: cleanUser
-    }]);
-  }
+  return value <= getLimit(cleanUser) ? [].concat(_toConsumableArray(state), [{
+    value: -value,
+    description: description,
+    user: cleanUser
+  }]) : state;
 };
 
-addExpense(budget, spendingLimits, 10, 'Pizza 🍕');
+var newBudget1 = addExpense(budget, spendingLimits, 10, 'Pizza 🍕');
+console.log(newBudget1);
 addExpense(budget, spendingLimits, 100, 'Going to movies 🍿', 'Matilda');
 addExpense(budget, spendingLimits, 200, 'Stuff', 'Jay');
 

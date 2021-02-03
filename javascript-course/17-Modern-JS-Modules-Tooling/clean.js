@@ -1,45 +1,64 @@
-const shoppingCart = [
-  { product: 'bread', quantity: 6 },
-  { product: 'pizza', quantity: 2 },
-  { product: 'milk', quantity: 4 },
-  { product: 'water', quantity: 10 },
+var budget = [
+  { value: 250, description: 'Sold old TV 📺', user: 'gustavo' },
+  { value: -45, description: 'Groceries 🥑', user: 'gustavo' },
+  { value: 3500, description: 'Monthly salary 👩‍💻', user: 'gustavo' },
+  { value: 300, description: 'Freelancing 👩‍💻', user: 'gustavo' },
+  { value: -1100, description: 'New iPhone 📱', user: 'gustavo' },
+  { value: -20, description: 'Candy 🍭', user: 'matilda' },
+  { value: -125, description: 'Toys 🚂', user: 'matilda' },
+  { value: -1800, description: 'New Laptop 💻', user: 'gustavo' },
 ];
 
-const allowProducts = {
-  lisbon: 5,
-  others: 7,
+var limits = {
+  gustavo: 1500,
+  matilda: 100,
 };
 
-const checkCorrectAllowedProducts = function (cart, numAllowed, city) {
-  if (!cart.length) return [];
+var add = function (value, description, user) {
+  if (!user) user = 'gustavo';
+  user = user.toLowerCase();
 
-  // const allowed = numAllowed[city] > 0 ? numAllowed[city] : numAllowed.others;
-  const allowed = numAllowed?.[city] ?? allowProducts.others;
+  var lim;
+  if (limits[user]) {
+    lim = limits[user];
+  } else {
+    lim = 0;
+  }
 
-  const newCart = cart.map(item => {
-    const { product, quantity } = item;
-    return {
-      product,
-      quantity: quantity > allowed ? allowed : quantity,
-    };
-  });
-
-  return newCart;
+  if (value <= lim) {
+    budget.push({ value: -value, description: description, user: user });
+  }
 };
-const allowedShoppingCart = checkCorrectAllowedProducts(
-  shoppingCart,
-  allowProducts,
-  'lisbon'
-  // 'faro'
-);
-console.log(allowedShoppingCart);
+add(10, 'Pizza 🍕');
+add(100, 'Going to movies 🍿', 'Matilda');
+add(200, 'Stuff', 'Jay');
+console.log(budget);
 
-const createOrderDescription = function (cart) {
-  const [{ product: p, quantity: q }] = cart;
+var check = function () {
+  for (var el of budget) {
+    var lim;
+    if (limits[el.user]) {
+      lim = limits[el.user];
+    } else {
+      lim = 0;
+    }
 
-  return `Order with ${q} ${p}${cart.length > 1 ? ', etc' : '.'}`;
+    if (el.value < -lim) {
+      el.flag = 'limit';
+    }
+  }
 };
+check();
 
-const orderDescription = createOrderDescription(allowedShoppingCart);
+console.log(budget);
 
-console.log(orderDescription);
+var bigExpenses = function (limit) {
+  var output = '';
+  for (var el of budget) {
+    if (el.value <= -limit) {
+      output += el.description.slice(-2) + ' / '; // Emojis are 2 chars
+    }
+  }
+  output = output.slice(0, -2); // Remove last '/ '
+  console.log(output);
+};

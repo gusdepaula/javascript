@@ -122,6 +122,12 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -172,17 +178,17 @@ var spendingLimits = Object.freeze({
   matilda: 100
 }); // spendingLimits.jay = 200;
 
-var getLimit = function getLimit(user) {
-  var _spendingLimits$user;
+var getLimit = function getLimit(limits, user) {
+  var _limits$user;
 
-  return (_spendingLimits$user = spendingLimits === null || spendingLimits === void 0 ? void 0 : spendingLimits[user]) !== null && _spendingLimits$user !== void 0 ? _spendingLimits$user : 0;
+  return (_limits$user = limits === null || limits === void 0 ? void 0 : limits[user]) !== null && _limits$user !== void 0 ? _limits$user : 0;
 }; // Pure function
 
 
 var addExpense = function addExpense(state, limits, value, description) {
   var user = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'gustavo';
   var cleanUser = user.toLowerCase();
-  return value <= getLimit(cleanUser) ? [].concat(_toConsumableArray(state), [{
+  return value <= getLimit(limits, cleanUser) ? [].concat(_toConsumableArray(state), [{
     value: -value,
     description: description,
     user: cleanUser
@@ -191,45 +197,45 @@ var addExpense = function addExpense(state, limits, value, description) {
 
 var newBudget1 = addExpense(budget, spendingLimits, 10, 'Pizza 🍕');
 var newBudget2 = addExpense(newBudget1, spendingLimits, 100, 'Going to movies 🍿', 'Matilda');
-var newBudget3 = addExpense(newBudget2, spendingLimits, 200, 'Stuff', 'Jay');
-console.log(newBudget3);
+var newBudget3 = addExpense(newBudget2, spendingLimits, 200, 'Stuff', 'Jay'); // const checkExpenses = function (state, limits) {
+//   return state.map(entry => {
+//     return entry.value < -getLimit(limits, entry.user)
+//       ? { ...entry, flag: 'limit' }
+//       : entry;
+//   });
+//   // for (const entry of budget) {
+//   //   if (entry.value < -getLimit(limits, entry.user)) {
+//   //     entry.flag = 'limit';
+//   //   }
+//   // }
+// };
 
-var checkExpenses = function checkExpenses() {
+var checkExpenses = function checkExpenses(state, limits) {
+  return state.map(function (entry) {
+    return entry.value < -getLimit(limits, entry.user) ? _objectSpread(_objectSpread({}, entry), {}, {
+      flag: 'limit'
+    }) : entry;
+  });
+};
+
+var finalBudget = checkExpenses(newBudget3, spendingLimits);
+console.log(finalBudget);
+
+var logBigExpenses = function logBigExpenses(bigLimit) {
+  var output = '';
+
   var _iterator = _createForOfIteratorHelper(budget),
       _step;
 
   try {
     for (_iterator.s(); !(_step = _iterator.n()).done;) {
       var entry = _step.value;
-
-      if (entry.value < -getLimit(entry.user)) {
-        entry.flag = 'limit';
-      }
+      output += entry.value <= -bigLimit ? "".concat(entry.description.slice(-2), " /") : '';
     }
   } catch (err) {
     _iterator.e(err);
   } finally {
     _iterator.f();
-  }
-};
-
-checkExpenses();
-
-var logBigExpenses = function logBigExpenses(bigLimit) {
-  var output = '';
-
-  var _iterator2 = _createForOfIteratorHelper(budget),
-      _step2;
-
-  try {
-    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-      var entry = _step2.value;
-      output += entry.value <= -bigLimit ? "".concat(entry.description.slice(-2), " /") : '';
-    }
-  } catch (err) {
-    _iterator2.e(err);
-  } finally {
-    _iterator2.f();
   }
 
   output = output.slice(0, -2); // Remove last '/ '

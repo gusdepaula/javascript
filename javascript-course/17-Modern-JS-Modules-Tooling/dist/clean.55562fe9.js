@@ -122,7 +122,15 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
 function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
@@ -162,8 +170,7 @@ var budget = Object.freeze([{
 var spendingLimits = Object.freeze({
   gustavo: 1500,
   matilda: 100
-});
-spendingLimits.jay = 200;
+}); // spendingLimits.jay = 200;
 
 var getLimit = function getLimit(user) {
   var _spendingLimits$user;
@@ -171,21 +178,23 @@ var getLimit = function getLimit(user) {
   return (_spendingLimits$user = spendingLimits === null || spendingLimits === void 0 ? void 0 : spendingLimits[user]) !== null && _spendingLimits$user !== void 0 ? _spendingLimits$user : 0;
 };
 
-var addExpense = function addExpense(value, description, user) {
+var addExpense = function addExpense(state, limits, value, description) {
+  var user = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 'gustavo';
   if (!user) user = 'gustavo';
-  user = user.toLowerCase();
+  var cleanUser = user.toLowerCase();
 
   if (value <= getLimit(user)) {
-    budget.push({
+    return [].concat(_toConsumableArray(state), [{
       value: -value,
       description: description,
-      user: user
-    });
+      user: cleanUser
+    }]);
   }
-}; // addExpense(10, 'Pizza 🍕');
-// addExpense(100, 'Going to movies 🍿', 'Matilda');
-// addExpense(200, 'Stuff', 'Jay');
+};
 
+addExpense(budget, spendingLimits, 10, 'Pizza 🍕');
+addExpense(budget, spendingLimits, 100, 'Going to movies 🍿', 'Matilda');
+addExpense(budget, spendingLimits, 200, 'Stuff', 'Jay');
 
 var checkExpenses = function checkExpenses() {
   var _iterator = _createForOfIteratorHelper(budget),

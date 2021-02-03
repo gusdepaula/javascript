@@ -15,21 +15,27 @@ const spendingLimits = Object.freeze({
   gustavo: 1500,
   matilda: 100,
 });
-spendingLimits.jay = 200;
+// spendingLimits.jay = 200;
 
 const getLimit = user => spendingLimits?.[user] ?? 0;
 
-const addExpense = function (value, description, user) {
+const addExpense = function (
+  state,
+  limits,
+  value,
+  description,
+  user = 'gustavo'
+) {
   if (!user) user = 'gustavo';
-  user = user.toLowerCase();
+  const cleanUser = user.toLowerCase();
 
   if (value <= getLimit(user)) {
-    budget.push({ value: -value, description: description, user: user });
+    return [...state, { value: -value, description, user: cleanUser }];
   }
 };
-// addExpense(10, 'Pizza 🍕');
-// addExpense(100, 'Going to movies 🍿', 'Matilda');
-// addExpense(200, 'Stuff', 'Jay');
+addExpense(budget, spendingLimits, 10, 'Pizza 🍕');
+addExpense(budget, spendingLimits, 100, 'Going to movies 🍿', 'Matilda');
+addExpense(budget, spendingLimits, 200, 'Stuff', 'Jay');
 
 const checkExpenses = function () {
   for (const entry of budget) {

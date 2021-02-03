@@ -120,8 +120,6 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"clean.js":[function(require,module,exports) {
 'strict mode';
 
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -219,32 +217,25 @@ var checkExpenses = function checkExpenses(state, limits) {
 };
 
 var finalBudget = checkExpenses(newBudget3, spendingLimits);
-console.log(finalBudget);
+console.log(finalBudget); // Impure
 
-var logBigExpenses = function logBigExpenses(bigLimit) {
-  var output = '';
+var logBigExpenses = function logBigExpenses(state, bigLimit) {
+  var bigExpenses = state.filter(function (entry) {
+    return entry.value <= -bigLimit;
+  }).map(function (entry) {
+    return entry.description.slice(-2);
+  }).join(' / '); // .reduce((str, cur) => `${str} / ${cur.description.slice(-2)}`, '');
 
-  var _iterator = _createForOfIteratorHelper(budget),
-      _step;
-
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var entry = _step.value;
-      output += entry.value <= -bigLimit ? "".concat(entry.description.slice(-2), " /") : '';
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-
-  output = output.slice(0, -2); // Remove last '/ '
-
-  console.log(output);
+  console.log(bigExpenses); // let output = '';
+  // for (const entry of budget) {
+  //   output +=
+  //     entry.value <= -bigLimit ? `${entry.description.slice(-2)} /` : '';
+  // }
+  // output = output.slice(0, -2); // Remove last '/ '
+  // console.log(output);
 };
 
-console.log(budget);
-logBigExpenses(500);
+logBigExpenses(finalBudget, 500);
 },{}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';

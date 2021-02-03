@@ -34,9 +34,15 @@ const addExpense = function (
     : state;
 };
 const newBudget1 = addExpense(budget, spendingLimits, 10, 'Pizza 🍕');
-console.log(newBudget1);
-addExpense(budget, spendingLimits, 100, 'Going to movies 🍿', 'Matilda');
-addExpense(budget, spendingLimits, 200, 'Stuff', 'Jay');
+const newBudget2 = addExpense(
+  newBudget1,
+  spendingLimits,
+  100,
+  'Going to movies 🍿',
+  'Matilda'
+);
+const newBudget3 = addExpense(newBudget2, spendingLimits, 200, 'Stuff', 'Jay');
+console.log(newBudget3);
 
 const checkExpenses = function () {
   for (const entry of budget) {

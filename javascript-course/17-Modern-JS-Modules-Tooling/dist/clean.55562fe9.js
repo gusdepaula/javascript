@@ -190,9 +190,9 @@ var addExpense = function addExpense(state, limits, value, description) {
 };
 
 var newBudget1 = addExpense(budget, spendingLimits, 10, 'Pizza 🍕');
-console.log(newBudget1);
-addExpense(budget, spendingLimits, 100, 'Going to movies 🍿', 'Matilda');
-addExpense(budget, spendingLimits, 200, 'Stuff', 'Jay');
+var newBudget2 = addExpense(newBudget1, spendingLimits, 100, 'Going to movies 🍿', 'Matilda');
+var newBudget3 = addExpense(newBudget2, spendingLimits, 200, 'Stuff', 'Jay');
+console.log(newBudget3);
 
 var checkExpenses = function checkExpenses() {
   var _iterator = _createForOfIteratorHelper(budget),

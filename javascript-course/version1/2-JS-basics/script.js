@@ -305,7 +305,7 @@ John and Mike both play basketball in different teams. In the latest 3 games, Jo
 GOOD LUCK 😀
 */
 
-var scoreJohn = (89 + 120 + 103) / 3;
+/* var scoreJohn = (89 + 120 + 103) / 3;
 var scoreMike = (116 + 94 + 123) / 3;
 var scoreMary = (97 + 134 + 105) / 3;
 
@@ -319,4 +319,32 @@ if (scoreJohn > scoreMike && scoreJohn > scoreMary) {
   console.log("Mary's team wins with, " + scoreMary + " points");
 } else {
   console.log("There is a draw");
+} */
+
+/*****************************************
+ * Functions
+ */
+
+function calculateAge(birthYear) {
+  return new Date().getFullYear() - birthYear;
 }
+
+var ageGustavo = calculateAge(1983);
+var ageMike = calculateAge(1948);
+var ageJane = calculateAge(1969);
+
+console.log(ageGustavo, ageMike, ageJane);
+
+function yearsUntilRetirement(year, firstName) {
+  var age = calculateAge(year);
+  var retirement = 65 - age;
+  if (retirement > 0) {
+    console.log(firstName + " retires in " + retirement + " years.");
+  } else {
+    console.log(firstName + " is already retired.");
+  }
+}
+
+yearsUntilRetirement(1983, "Gustavo");
+yearsUntilRetirement(1948, "Mike");
+yearsUntilRetirement(1969, "Jane");

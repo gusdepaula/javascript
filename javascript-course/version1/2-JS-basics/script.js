@@ -324,7 +324,7 @@ if (scoreJohn > scoreMike && scoreJohn > scoreMary) {
 /*****************************************
  * Functions
  */
-
+/* 
 function calculateAge(birthYear) {
   return new Date().getFullYear() - birthYear;
 }
@@ -347,4 +347,30 @@ function yearsUntilRetirement(year, firstName) {
 
 yearsUntilRetirement(1983, "Gustavo");
 yearsUntilRetirement(1948, "Mike");
-yearsUntilRetirement(1969, "Jane");
+yearsUntilRetirement(1969, "Jane"); */
+
+/*****************************************
+ * Functions Statements and Expression
+ */
+
+// Functions Declaration
+// function whatDoYouDo(job, firstName) {}
+
+// Functions Expression
+var whatDoYouDo = function (job, firstName) {
+  switch (job) {
+    case "teacher":
+    case "instructor":
+      return firstName + " teaches kids how to code";
+    case "driver":
+      return firstName + " drives an Uber in Lisbon";
+    case "designer":
+      return firstName + " designs beautiful websites";
+    default:
+      return firstName + " does something else";
+  }
+};
+
+console.log(whatDoYouDo("teacher", "John"));
+console.log(whatDoYouDo("designer", "Jane"));
+console.log(whatDoYouDo("retired", "Mike"));

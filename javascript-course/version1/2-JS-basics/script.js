@@ -615,15 +615,6 @@ Mark likes to tip 20% of the bill when the bill is less than $100, 10% when the 
 
 GOOD LUCK 😀
 */
-/* 
-var tips = [
-  tipCalculator(bills[0]),
-  tipCalculator(bills[1]),
-  tipCalculator(bills[2]),
-];
-
-var finalValues = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
-}; */
 
 var john = {
   name: "John Smith",
@@ -650,3 +641,61 @@ var john = {
 
 john.tipCalculator();
 console.log(john);
+
+var mark = {
+  name: "Mark Miller",
+  bills: [77, 375, 110, 45],
+  tipCalculator: function () {
+    this.tips = [];
+    this.finalValues = [];
+    for (var i = 0; i < this.bills.length; i++) {
+      var bill = this.bills[i];
+      var percentage;
+      if (bill <= 100) {
+        percentage = 0.2;
+      } else if (bill >= 100 && bill < 300) {
+        percentage = 0.1;
+      } else {
+        percentage = 0.25;
+      }
+
+      this.tips[i] = bill * percentage;
+      this.finalValues[i] = bill + bill * percentage;
+    }
+  },
+};
+
+mark.tipCalculator();
+console.log(mark);
+
+var calcAverage = function (tips) {
+  var sum = 0;
+  for (var i = 0; i < tips.length; i++) {
+    sum = sum + tips[i];
+  }
+  return sum / tips.length;
+};
+
+john.average = calcAverage(john.tips);
+mark.average = calcAverage(mark.tips);
+console.log(john, mark);
+
+if (john.average > mark.average) {
+  console.log(
+    john.name +
+      "'s family spent more money in restaurants than " +
+      mark.name +
+      "'s family with an avarage of $" +
+      john.average
+  );
+} else if (mark.average > john.average) {
+  console.log(
+    mark.name +
+      "'s family spent more money in restaurants than " +
+      john.name +
+      "'s family with an avarage of $" +
+      mark.average
+  );
+} else {
+  console.log("They spent the same avarage in the restaurants");
+}

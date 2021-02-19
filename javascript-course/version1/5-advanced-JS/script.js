@@ -127,7 +127,7 @@ console.log(rates); */
 /////////////////////////////
 // Functions Returning Functions
 
-function interviewQuestion(job) {
+/* function interviewQuestion(job) {
   if (job === "designer") {
     return function (name) {
       console.log(`${name}, can you please explain what UX design is?`);
@@ -152,4 +152,26 @@ designerQuestion("Jane");
 designerQuestion("Mark");
 designerQuestion("Mike");
 
-interviewQuestion("teacher")("Mark");
+interviewQuestion("teacher")("Mark"); */
+
+/////////////////////////////
+// Immediately  Invoked Function Expressions(IIFE)
+
+/* function game() {
+  var score = Math.random() * 10;
+  console.log(score >= 5);
+}
+game();
+ */
+
+(function () {
+  var score = Math.random() * 10;
+  console.log(score >= 5);
+})();
+
+// console.log(score);
+
+(function (goodluck) {
+  var score = Math.random() * 10;
+  console.log(score >= 5 - goodluck);
+})(5);

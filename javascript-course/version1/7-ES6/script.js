@@ -192,7 +192,7 @@ new Person("Mike").myFriends6(friends);
 
 ///////////////////////////////////////////
 // Lecture: Arrow Functions: Destructuring
-
+/* 
 // ES5
 var jonh = ["John", 26];
 // var name = john[0];
@@ -224,3 +224,50 @@ function calcAgeRetirement(year) {
 const [age, retirement] = calcAgeRetirement(1990);
 console.log(age);
 console.log(retirement);
+ */
+
+///////////////////////////////////////////
+// Lecture: Arrays in ES6/ES2015
+
+const boxes = document.querySelectorAll(".box");
+
+// ES5
+var boxesArr5 = Array.prototype.slice.call(boxes);
+boxesArr5.forEach(function (cur) {
+  cur.style.backgroundColor = "dodgerblue";
+});
+console.log(boxesArr5);
+
+// ES6
+const boxesArr6 = Array.from(boxes);
+boxesArr6.forEach((cur) => (cur.style.backgroundColor = "dodgerblue"));
+
+// ES5
+/* for (var i = 0; i < boxesArr5.length; i++) {
+  if (boxesArr5[i].className === c) {
+    continue;
+  }
+  boxesArr5[i].textContent = "I changed to blue!";
+} */
+
+// ES6
+for (const cur of boxesArr6) {
+  if (cur.className.includes("blue")) {
+    continue;
+  }
+  cur.textContent = "I changed to blue!";
+}
+
+// ES5
+var ages = [12, 17, 8, 21, 14, 11];
+var fullAge = ages.map(function (cur) {
+  return cur >= 18;
+});
+console.log(fullAge);
+
+console.log(fullAge.indexOf(true));
+console.log(ages[fullAge.indexOf(true)]);
+
+// ES6
+console.log(ages.findIndex((cur) => cur >= 18));
+console.log(ages.find((cur) => cur >= 18));

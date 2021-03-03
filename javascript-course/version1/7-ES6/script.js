@@ -75,7 +75,7 @@ console.log(c);
 ///////////////////////////////////////////
 // Lecture: Strings in ES6/ES2015
 
-let firstName = "Johhn";
+/* let firstName = "Johhn";
 let lastName = "Smith";
 const yearOfBirth = 1990;
 function calcAge(year) {
@@ -106,4 +106,24 @@ const n = `${firstName} ${lastName}`;
 console.log(n.startsWith("J"));
 console.log(n.endsWith("th"));
 console.log(n.includes("oh"));
-console.log(`${n} `.repeat(5));
+console.log(`${n} `.repeat(5)); */
+
+///////////////////////////////////////////
+// Lecture: Arrow Functions: Basics
+
+const years = [1990, 1965, 1982, 1937];
+
+// ES5
+var ages5 = years.map(function (el) {
+  return new Date().getFullYear() - el;
+});
+console.log(ages5);
+
+// ES6
+let age6 = years.map((el) => new Date().getFullYear() - el);
+console.log(age6);
+
+age6 = years.map(
+  (el, index) => `Age element ${index + 1}: ${new Date().getFullYear() - el}.`
+);
+console.log(age6);

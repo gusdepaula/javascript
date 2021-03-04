@@ -274,9 +274,9 @@ console.log(ages.find((cur) => cur >= 18));
  */
 
 ///////////////////////////////////////////
-// The Spread Operator
+// Lecture: The Spread Operator
 
-function addFourAges(a, b, c, d) {
+/* function addFourAges(a, b, c, d) {
   return a + b + c + d;
 }
 
@@ -301,4 +301,34 @@ const h = document.querySelector("h1");
 const boxes = document.querySelectorAll(".box");
 const all = [h, ...boxes];
 
-Array.from(all).forEach((cur) => (cur.style.color = "purple"));
+Array.from(all).forEach((cur) => (cur.style.color = "purple")); */
+
+///////////////////////////////////////////
+// Loggi Chalenge
+
+const fruits1 = ["Banana", "Apple", "Pineapple", "Watermelon"];
+const fruits2 = [
+  "Banana",
+  "Orange",
+  "Peach",
+  "Melon",
+  "Apple",
+  "Pineapple",
+  "Watermelon",
+];
+
+const allFruits = [...fruits1, ...fruits2];
+
+const uniqueForEach = [];
+
+// allFruits.forEach((item, index) => {
+//   if (allFruits.indexOf(item) == index) {
+//     uniqueForEach.push(item);
+//   }
+// });
+
+allFruits.map((item, index) =>
+  allFruits.indexOf(item) === index ? uniqueForEach.push(item) : -1
+);
+
+console.log(uniqueForEach);

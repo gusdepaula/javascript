@@ -305,7 +305,7 @@ Array.from(all).forEach((cur) => (cur.style.color = "purple")); */
 
 ///////////////////////////////////////////
 // Loggi Chalenge
-
+/* 
 const fruits1 = ["Banana", "Apple", "Pineapple", "Watermelon"];
 const fruits2 = [
   "Banana",
@@ -331,4 +331,46 @@ allFruits.map((item, index) =>
   allFruits.indexOf(item) === index ? uniqueForEach.push(item) : -1
 );
 
-console.log(uniqueForEach);
+console.log(uniqueForEach); */
+
+///////////////////////////////////////////
+// Rest Parameters
+/* 
+// ES5
+function isFullAge5() {
+  //   console.log(arguments);
+  var argsArr = Array.prototype.slice.call(arguments);
+  argsArr.map(function (cur) {
+    console.log(new Date().getFullYear() - cur >= 18);
+  });
+}
+
+// isFullAge5(1990, 1999, 1965);
+// isFullAge5(1990, 1999, 1965, 2016, 1987);
+
+// ES6
+function isFullAge6(...years) {
+  years.map((cur) => console.log(new Date().getFullYear() - cur >= 18));
+}
+
+isFullAge6(1990, 1999, 1965);
+isFullAge6(1990, 1999, 1965, 2016, 1987);
+ */
+
+// ES5
+function isFullAge5(limit) {
+  var argsArr = Array.prototype.slice.call(arguments, 1);
+  argsArr.map(function (cur) {
+    console.log(new Date().getFullYear() - cur >= limit);
+  });
+}
+
+isFullAge5(21, 1990, 1999, 1965);
+// isFullAge5(1990, 1999, 1965, 2016, 1987);
+
+// ES6
+function isFullAge6(limit, ...years) {
+  years.map((cur) => console.log(new Date().getFullYear() - limit >= 18));
+}
+
+isFullAge6(16, 1990, 1999, 1965);

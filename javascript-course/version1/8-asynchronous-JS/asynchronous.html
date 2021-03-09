@@ -144,17 +144,27 @@
       getWeather("San Francisco", "us");
       getWeather("Sao Paulo", "br"); */
 
-      async function getWeatherAW(city, countryCode) {
+      async function getWeatherAW(city) {
         try {
           const result = await fetch(
-            `http://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${appID}`
+            `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${appID}`
           );
           const data = await result.json();
-          //   console.log(data);
+          // console.log(data);
 
-          const today = data.main;
+          const today = data.list[0].main;
+          const tomorrow = data.list[2].main;
           console.log(
-            `Temperatures today in ${data.name} stay between ${convertToCelsius(
+            `Temperatures today in ${
+              data.city.name
+            } stay between ${convertToCelsius(
+              today.temp_min
+            )}°C and ${convertToCelsius(today.temp_max)}°C`
+          );
+          console.log(
+            `Temperatures tomorrow in ${
+              data.city.name
+            } stay between ${convertToCelsius(
               today.temp_min
             )}°C and ${convertToCelsius(today.temp_max)}°C`
           );
@@ -163,12 +173,7 @@
           console.log(error);
         }
       }
-      getWeatherAW("San Francisco", "us");
-      let dataSaoPaulo;
-      getWeatherAW("Sao Paulo", "br").then(
-        (data) => (dataSaoPaulo = data),
-        console.log(dataSaoPaulo)
-      );
+      getWeatherAW("San Francisco");
     </script>
   </body>
 </html>

@@ -49,7 +49,7 @@
         }, 1500);
       }
       getRecipe();
-      */
+
       const getIDs = new Promise((resolve, reject) => {
         setTimeout(() => {
           resolve([523, 883, 432, 974]);
@@ -85,7 +85,7 @@
           );
         });
       };
-      /* getIDs
+      getIDs
         .then((IDs) => {
           console.log(IDs);
           return getRecipe(IDs[2]);
@@ -99,7 +99,7 @@
         })
         .catch((error) => {
           console.log(error);
-        }); */
+        });
       async function getRecipesAW() {
         const IDs = await getIDs;
         console.log(IDs);
@@ -113,6 +113,34 @@
       getRecipesAW().then((result) =>
         console.log(`${result} is the best ever`)
       );
+      */
+      const appID = `3ad1ebb14d51169352930f82aceea563`; // key was gerenated in openweathermap.org
+      function getWeather(city, countryCode) {
+        fetch(
+          // "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/2487956/"
+          // Use this API Weather because the old does not work
+          `http://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${appID}`
+        )
+          .then((result) => {
+            console.log(result);
+            return result.json();
+          })
+          .then((data) => {
+            console.log(data);
+            const today = data.main;
+            const convertToCelsius = function (degK) {
+              return Math.round(degK - 273);
+            };
+            console.log(
+              `Temperatures in ${data.name} stay between ${convertToCelsius(
+                today.temp_min
+              )}°C and ${convertToCelsius(today.temp_max)}°C`
+            );
+          })
+          .catch((error) => console.log(error));
+      }
+      getWeather("San Francisco", "us");
+      getWeather("Sao Paulo", "br");
     </script>
   </body>
 </html>

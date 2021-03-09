@@ -115,24 +115,26 @@
       );
       */
       const appID = `3ad1ebb14d51169352930f82aceea563`; // key was gerenated in openweathermap.org
-      function getWeather(city, countryCode) {
+      const convertToCelsius = function (degK) {
+        return Math.round(degK - 273);
+      };
+      /* function getWeather(city, countryCode) {
         fetch(
           // "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/2487956/"
           // Use this API Weather because the old does not work
           `http://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${appID}`
         )
           .then((result) => {
-            console.log(result);
+            // console.log(result);
             return result.json();
           })
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             const today = data.main;
-            const convertToCelsius = function (degK) {
-              return Math.round(degK - 273);
-            };
             console.log(
-              `Temperatures in ${data.name} stay between ${convertToCelsius(
+              `Temperatures today in ${
+                data.name
+              } stay between ${convertToCelsius(
                 today.temp_min
               )}°C and ${convertToCelsius(today.temp_max)}°C`
             );
@@ -140,7 +142,33 @@
           .catch((error) => console.log(error));
       }
       getWeather("San Francisco", "us");
-      getWeather("Sao Paulo", "br");
+      getWeather("Sao Paulo", "br"); */
+
+      async function getWeatherAW(city, countryCode) {
+        try {
+          const result = await fetch(
+            `http://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${appID}`
+          );
+          const data = await result.json();
+          //   console.log(data);
+
+          const today = data.main;
+          console.log(
+            `Temperatures today in ${data.name} stay between ${convertToCelsius(
+              today.temp_min
+            )}°C and ${convertToCelsius(today.temp_max)}°C`
+          );
+          return data;
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      getWeatherAW("San Francisco", "us");
+      let dataSaoPaulo;
+      getWeatherAW("Sao Paulo", "br").then(
+        (data) => (dataSaoPaulo = data),
+        console.log(dataSaoPaulo)
+      );
     </script>
   </body>
 </html>

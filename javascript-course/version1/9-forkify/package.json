@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
   },
   "author": "Gustavo de Paula",
   "license": "ISC",
   "devDependencies": {
     "webpack": "^4.2.0",
-    "webpack-cli": "^2.1.5"
+    "webpack-cli": "^2.1.5",
+    "webpack-dev-server": "^3.1.1",
+    "html-webpack-plugin": "^3.0.7"
   },
   "dependencies": {}
 }

@@ -72,7 +72,10 @@ const renderButtons = (page, numResults, resPerPage) => {
     // Only button to go to prev page
     button = createButton(page, "prev");
   }
-  elements.searchResPages.insertAdjacentHTML("afterbegin", button);
+  const pagination = button !== undefined;
+  if (pagination) {
+    elements.searchResPages.insertAdjacentHTML("afterbegin", button);
+  }
 };
 
 export const renderResults = (recipes, page = 1, resPerPage = 10) => {

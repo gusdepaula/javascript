@@ -19,13 +19,14 @@ export default class Recipe {
       this.ingredients = this.filteredId[0].ingredients;
       this.cooking = this.filteredId[0].how_to_cook;
 
-      console.log(this.filteredId);
+      //   console.log(this.filteredId);
     } catch (error) {
       console.log(error);
     }
   }
 
   calcTime() {
+    // Assuming that we need 15 min for each 3 ingredients
     const numIng = this.ingredients.length;
     const periods = Math.ceil(numIng / 3);
     this.time = periods * 15;

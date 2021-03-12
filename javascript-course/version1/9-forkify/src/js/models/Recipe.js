@@ -17,7 +17,7 @@ export default class Recipe {
       this.author = this.filteredId[0].publisher;
       this.img = this.filteredId[0].image_url;
       this.ingredients = this.filteredId[0].ingredients;
-      this.cooking = this.filteredId[0].how_to_cook;
+      this.cooking = this.filteredId[0].directions;
 
       //   console.log(this.filteredId);
     } catch (error) {

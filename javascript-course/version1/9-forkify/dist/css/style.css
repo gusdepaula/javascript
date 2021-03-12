@@ -525,10 +525,12 @@ body {
   margin-bottom: 3rem;
   color: #968b87;
 }
+.preWrap {
+  white-space: pre-wrap;
+}
 .recipe__by {
   font-weight: 700;
 }
-
 .shopping {
   padding: 3rem 4rem;
   display: flex;

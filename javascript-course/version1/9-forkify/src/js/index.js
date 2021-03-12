@@ -1,6 +1,7 @@
 import Search from "./models/Search";
 import Recipe from "./models/Recipe";
 import * as searchView from "./views/searchView";
+import * as recipeView from "./views/recipeView";
 import { elements, renderLoader, clearLoader } from "./views/base";
 
 /** Global state of the app
@@ -16,10 +17,9 @@ const state = {};
  */
 const controlSearch = async () => {
   // 1) Get query from view
-  //   const query = searchView.getInput();
-  const query = `beringela`;
-
-  //   console.log(query);
+  const query = searchView.getInput();
+  // TESTING
+  //   const query = `beringela`;
 
   if (query) {
     // 2) New search object and add to state
@@ -50,10 +50,10 @@ elements.searchForm.addEventListener("submit", (e) => {
 });
 
 // TESTING
-window.addEventListener("load", (e) => {
-  e.preventDefault();
-  controlSearch();
-});
+// window.addEventListener("load", (e) => {
+//   e.preventDefault();
+//   controlSearch();
+// });
 
 elements.searchResPages.addEventListener("click", (e) => {
   const btn = e.target.closest(".btn-inline");
@@ -74,12 +74,14 @@ const controlRecipe = async () => {
 
   if (id) {
     // Prepate UI for changes
+    recipeView.clearRecipe();
+    renderLoader(elements.recipe);
 
     // Create new recipe object
     state.recipe = new Recipe(id);
 
     //TESTING
-    window.r = state.recipe;
+    // window.r = state.recipe;
 
     try {
       // Get recipe data
@@ -92,6 +94,8 @@ const controlRecipe = async () => {
 
       // Render recipe
       console.log(state.recipe);
+      clearLoader();
+      recipeView.renderRecipe(state.recipe);
     } catch (err) {
       console.log(`Error processing recipe...😟`);
     }

@@ -4,6 +4,19 @@ export const clearRecipe = () => {
   elements.recipe.innerHTML = "";
 };
 
+export const hideResultsMobile = () => {
+  elements.searchRes.classList.contains("hidden-xs")
+    ? elements.searchRes.classList.remove("hidden-xs")
+    : elements.searchRes.classList.add("hidden-xs");
+};
+
+export const hideResultsAndShowRecipe = () => {
+  if (elements.recipe.classList.contains("hidden-xs")) {
+    elements.searchRes.classList.add("hidden-xs");
+    elements.recipe.classList.remove("hidden-xs");
+  }
+};
+
 const createIngredient = (ingredient) => `
     <li class="recipe__item">
         <svg class="recipe__icon">
@@ -71,7 +84,7 @@ export const renderRecipe = (recipe) => {
         ${recipe.ingredients.map((el) => createIngredient(el)).join("")}
     </ul>
 
-    <button class="btn-small recipe__btn recipe__btn--add">
+    <button class="btn-small recipe__btn recipe__btn--add hidden-xs">
         <svg class="search__icon">
             <use href="img/icons.svg#icon-shopping-cart"></use>
         </svg>

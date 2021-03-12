@@ -2,6 +2,13 @@ import { elements } from "./base";
 
 export const getInput = () => elements.searchInput.value;
 
+export const showResultsMobile = () => {
+  if (window.location.hash) {
+    elements.searchRes.classList.remove("hidden-xs");
+    elements.recipe.classList.add("hidden-xs");
+  }
+};
+
 export const clearInput = () => {
   elements.searchInput.value = "";
 };

@@ -29,6 +29,8 @@ const controlSearch = async () => {
     searchView.clearInput();
     searchView.clearResults();
     renderLoader(elements.searchResList);
+    // searchView.hideRecipeMobile();
+    searchView.showResultsMobile();
 
     try {
       // 4) Search for recipes
@@ -76,6 +78,7 @@ const controlRecipe = async () => {
     // Prepate UI for changes
     recipeView.clearRecipe();
     renderLoader(elements.recipe);
+    recipeView.hideResultsMobile();
 
     // Create new recipe object
     state.recipe = new Recipe(id);
@@ -94,6 +97,7 @@ const controlRecipe = async () => {
 
       // Render recipe
       console.log(state.recipe);
+      recipeView.hideResultsAndShowRecipe();
       clearLoader();
       recipeView.renderRecipe(state.recipe);
     } catch (err) {

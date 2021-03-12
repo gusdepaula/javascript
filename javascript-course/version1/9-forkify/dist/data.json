@@ -4,46 +4,14 @@
       {
         "publisher": "Gustavo de Paula",
         "ingredients": [
-          {
-            "quantity": 1,
-            "unit": "",
-            "description": "Beringela"
-          },
-          {
-            "quantity": 0.3,
-            "unit": "xícara",
-            "description": "Shoyu"
-          },
-          {
-            "quantity": 0.3,
-            "unit": "xícara",
-            "description": "água"
-          },
-          {
-            "quantity": 2,
-            "unit": "colheres de sopa",
-            "description": "açúcar"
-          },
-          {
-            "quantity": 2,
-            "unit": "colheres",
-            "description": "óleo"
-          },
-          {
-            "quantity": 1,
-            "unit": "colher de sopa",
-            "description": "vinagre"
-          },
-          {
-            "quantity": 1,
-            "unit": "colher de sopa",
-            "description": "amido de milho"
-          },
-          {
-            "quantity": 0.5,
-            "unit": "colher de chá",
-            "description": "gengibre ralado"
-          }
+          "1 Beringela",
+          "0.3 xícara de Shoyu",
+          "0.3 xícara de água",
+          "2 colheres de sopa de açúcar",
+          "2 colheres de óleo",
+          "1 colher de sopa de vinagre",
+          "1 colher de sopa de amido de milho",
+          "0.5 colher de chá gengibre ralado"
         ],
         "image_url": "https://miro.medium.com/max/2400/1*Qyecqqgkl83Hv31dbe1HvQ.jpeg",
         "title": "Beringela agridoce asiática",
@@ -53,26 +21,10 @@
       {
         "publisher": "Gustavo de Paula",
         "ingredients": [
-          {
-            "quantity": 1,
-            "unit": "vidro",
-            "description": "cogumelos"
-          },
-          {
-            "quantity": 2,
-            "unit": "dentes",
-            "description": "alho picados"
-          },
-          {
-            "quantity": 1,
-            "unit": "",
-            "description": "coentro fresco picado"
-          },
-          {
-            "quantity": 2,
-            "unit": "colheres de sopa",
-            "description": "azeite"
-          }
+          "1 vidro de cogumelos",
+          "2 dentes de alho picados",
+          "1 coentro fresco picado",
+          "2 colheres de sopa de azeite"
         ],
         "image_url": "https://espiga.pt/uploads/recipes/espiga_cogumelos_salteados_com_coentros_e_alho.png",
         "title": "Cogumelos salteados com alho e coentro",

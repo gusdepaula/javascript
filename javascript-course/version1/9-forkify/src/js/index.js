@@ -16,7 +16,9 @@ const state = {};
  */
 const controlSearch = async () => {
   // 1) Get query from view
-  const query = searchView.getInput();
+  //   const query = searchView.getInput();
+  const query = `beringela`;
+
   //   console.log(query);
 
   if (query) {
@@ -47,6 +49,12 @@ elements.searchForm.addEventListener("submit", (e) => {
   controlSearch();
 });
 
+// TESTING
+window.addEventListener("load", (e) => {
+  e.preventDefault();
+  controlSearch();
+});
+
 elements.searchResPages.addEventListener("click", (e) => {
   const btn = e.target.closest(".btn-inline");
   if (btn) {
@@ -70,9 +78,13 @@ const controlRecipe = async () => {
     // Create new recipe object
     state.recipe = new Recipe(id);
 
+    //TESTING
+    window.r = state.recipe;
+
     try {
       // Get recipe data
       await state.recipe.getRecipe();
+      state.recipe.parseIngredients();
 
       // Calcultate servings and time
       state.recipe.calcTime();

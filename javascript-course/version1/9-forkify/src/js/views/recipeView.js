@@ -75,7 +75,7 @@ export const renderRecipe = (recipe) => {
         <span class="recipe__info-data recipe__info-data--minutes">${
           recipe.time
         }</span>
-        <span class="recipe__info-text"> minutes</span>
+        <span class="recipe__info-text"> minutos</span>
     </div>
     <div class="recipe__info">
         <svg class="recipe__info-icon">
@@ -84,7 +84,7 @@ export const renderRecipe = (recipe) => {
         <span class="recipe__info-data recipe__info-data--people">${
           recipe.servings
         }</span>
-        <span class="recipe__info-text"> servings</span>
+        <span class="recipe__info-text"> porções</span>
 
         <div class="recipe__info-buttons">
             <button class="btn-tiny btn-decrease">
@@ -130,4 +130,16 @@ export const renderRecipe = (recipe) => {
     </div>
   `;
   elements.recipe.insertAdjacentHTML("afterbegin", markup);
+};
+
+export const updateServingsIngredients = (recipe) => {
+  // Upadate servings
+  document.querySelector(".recipe__info-data--people").textContent =
+    recipe.servings;
+
+  // Update ingredients
+  const countElements = Array.from(document.querySelectorAll(".recipe__count"));
+  countElements.forEach((el, i) => {
+    el.textContent = formatCount(recipe.ingredients[i].count);
+  });
 };

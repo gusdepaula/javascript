@@ -116,7 +116,7 @@ export const renderRecipe = (recipe) => {
         <svg class="search__icon">
             <use href="img/icons.svg#icon-shopping-cart"></use>
         </svg>
-        <span>Add to shopping list</span>
+        <span>Adiciona na lista de compras</span>
     </button>
     </div>
 

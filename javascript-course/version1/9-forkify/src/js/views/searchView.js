@@ -28,7 +28,7 @@ export const highlightSelected = (id) => {
     .classList.add("results__link--active");
 };
 
-const limitRecipeTitle = (title, limit = 40) => {
+export const limitRecipeTitle = (title, limit = 40) => {
   if (title.length > limit) {
     const newTitle = [];
     title.split(" ").reduce((acc, cur) => {

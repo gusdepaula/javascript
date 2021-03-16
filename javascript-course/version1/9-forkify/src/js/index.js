@@ -42,7 +42,7 @@ const controlSearch = async () => {
       clearLoader();
       searchView.renderResults(state.search.filteredQuery);
     } catch (err) {
-      console.log(`Something wrong with the search...😟`);
+      console.log(`Deu alguma coisa errada com a pesquisa...😟`);
       clearLoader();
     }
   }
@@ -108,7 +108,7 @@ const controlRecipe = async () => {
       clearLoader();
       recipeView.renderRecipe(state.recipe);
     } catch (err) {
-      console.log(`Error processing recipe...😟`);
+      console.log(`Erro no processamento da receita...😟`);
     }
   }
 };

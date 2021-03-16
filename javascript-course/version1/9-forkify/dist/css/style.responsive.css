@@ -5,7 +5,7 @@
   }
   .header__logo {
     margin-left: 2rem;
-    height: 3.5rem;
+    height: 6rem;
   }
   .search {
     padding-left: 2rem;
@@ -24,6 +24,9 @@
   }
   .recipe__directions-text {
     width: 100%;
+  }
+  .results__title {
+    font-size: 3rem;
   }
 }
 

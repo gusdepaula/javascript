@@ -374,6 +374,10 @@ body {
 .likes__btn--next {
   float: right;
 }
+.results__title {
+  font-size: 1.8rem;
+  padding: 0 1.5rem;
+}
 
 .recipe {
   background-color: #f9f5f3;

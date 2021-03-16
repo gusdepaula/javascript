@@ -33,7 +33,7 @@ const controlSearch = async () => {
     searchView.clearInput();
     searchView.clearResults();
     renderLoader(elements.searchResList);
-    // searchView.hideRecipeMobile();
+    searchView.hideTitle();
     searchView.showResultsMobile();
 
     try {
@@ -105,7 +105,7 @@ const controlRecipe = async () => {
       state.recipe.calcServings();
 
       // Render recipe
-      // console.log(state.recipe);
+      // console.log(state.recipe.id);
       recipeView.hideResultsAndShowRecipe();
       clearLoader();
       recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
@@ -156,10 +156,6 @@ elements.shopping.addEventListener("click", (e) => {
 /**
  * LIST CONTROLLER
  */
-// TESTING
-state.likes = new Likes();
-likesView.toggleLikeMenu(state.likes.getNumLikes());
-
 const controlLike = () => {
   if (!state.likes) {
     state.likes = new Likes();
@@ -195,6 +191,20 @@ const controlLike = () => {
   }
   likesView.toggleLikeMenu(state.likes.getNumLikes());
 };
+
+// Restore liked recipes on page load
+window.addEventListener("load", () => {
+  state.likes = new Likes();
+
+  // Restore likes
+  state.likes.readStorage();
+
+  // Toggle like menu button
+  likesView.toggleLikeMenu(state.likes.getNumLikes());
+
+  // Render the existing likes
+  state.likes.likes.forEach((like) => likesView.renderLike(like));
+});
 
 // Handling recipe button clicks
 elements.recipe.addEventListener("click", (e) => {

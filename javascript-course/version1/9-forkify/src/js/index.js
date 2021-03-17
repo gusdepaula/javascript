@@ -69,6 +69,13 @@ elements.searchResPages.addEventListener("click", (e) => {
   }
 });
 
+elements.likesMenu.addEventListener("click", () => {
+  elements.likesPanel.classList.add("likes__panel-active");
+  setTimeout(() => {
+    elements.likesPanel.classList.remove("likes__panel-active");
+  }, 7000);
+});
+
 /**
  * RECIPE CONTROLLER
  */

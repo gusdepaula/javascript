@@ -4,7 +4,7 @@
       {
         "publisher": "Gustavo de Paula",
         "ingredients": [
-          "1 Beringela",
+          "1 Berinjela",
           "0.33 xícara de Shoyu",
           "0.33 xícara de água",
           "2 colheres de sopa de açúcar",
@@ -14,8 +14,8 @@
           "0.5 colher de chá gengibre ralado"
         ],
         "image_url": "https://miro.medium.com/max/2400/1*Qyecqqgkl83Hv31dbe1HvQ.jpeg",
-        "title": "Beringela agridoce asiática",
-        "directions": "Cortar a berinjela em quadrados. Em uma frigideira adicionar o óleo e quando estiver quente, dispor as berinjelas. Reduza o fogo e deixa dourar bem de cada lado até ficar crocante. Ajuste de sal e reserve.<br />Adicione em um recipiente, o shoyu, a água, açúcar, vinagre, gengibre e mexa. Adicione o amido de milho a mistura e mexa novamente até que dissolva por completo. Na frigideira que dourou a beringela adicione o molho e mexe até q engrosse. Adicione a berinjela e quando tiver incorporado no molho, ajuste com cebolinha e finalize com gergelim.",
+        "title": "Berinjela agridoce asiática",
+        "directions": "Cortar a berinjela em quadrados. Em uma frigideira adicionar o óleo e quando estiver quente, dispor as berinjelas. Reduza o fogo e deixa dourar bem de cada lado até ficar crocante. Ajuste de sal e reserve.<br />Adicione em um recipiente, o shoyu, a água, açúcar, vinagre, gengibre e mexa. Adicione o amido de milho a mistura e mexa novamente até que dissolva por completo. Na frigideira que dourou a Berinjela adicione o molho e mexe até q engrosse. Adicione a berinjela e quando tiver incorporado no molho, ajuste com cebolinha e finalize com gergelim.",
         "id": "5ed6604591c37cdc054bcd09"
       },
       {
@@ -29,7 +29,37 @@
         "image_url": "https://espiga.pt/uploads/recipes/espiga_cogumelos_salteados_com_coentros_e_alho.png",
         "title": "Cogumelos salteados com alho e coentro",
         "directions": "Escorra e lave bem os cogumelos. Numa frigideira com tampa, aqueça o azeite com alho picado até que esteja bem frito.<br />Junte os cogumelos, agite a frigideira para envolver no azeite e tampe.<br />Cozinhe até que os cogumelos percam uma boa parte da água, agitando sempre a frigideira para evitar que grude.<br />Coloque em uma travessa, salpique com coentro a gosto e sirva em seguida.",
-        "id": "5ed6604591c37cdc054bcac4"
+        "id": "043591a3a8344e4ab193772d95b2214b"
+      },
+      {
+        "publisher": "Carolina Carmo",
+        "ingredients": [
+          "4 colheres de sopa de açúcar mascavo",
+          "2 colheres de sopa de leite de coco",
+          "2 colheres de sopa de óleo de coco",
+          "0.25 colher de chá de essência de baunilha",
+          "8 colheres de sopa de farinha de trigo",
+          "0.5 colher de fermento em pó",
+          "chocolate amargo vegano picado a gosto"
+        ],
+        "image_url": "https://img.cybercook.com.br/receitas/273/cookies-veganos-623x350.jpeg",
+        "title": "Cookie vegano",
+        "directions": "Em uma tigela, misture o açúcar mascavo, leite de coco, o óleo de coco, a essência de baunilha e o sal.<br /> Acrescente a farinha de trigo e o fermento, misture bem.<br /> Por último, adicione o chocolate amargo e misture.<br /> Molde os cookies e coloque em uma forma.<br /> Deixe na geladeira por 20 minutos. Em seguida leve ao forno preaquecido(200°C) por cerca de 20 minutos.",
+        "id": "446e87f0541943cf8ea3eccf6c99f791"
+      },
+      {
+        "publisher": "Gustavo de Paula",
+        "ingredients": [
+          "1 fatia de pão de integral",
+          "1 abacate",
+          "3 tomates cereja",
+          "1 limão suco",
+          "Chá de frutas vermelhas para acompanhar + uma maçã verde ou vermelha e morangos"
+        ],
+        "image_url": "https://s2.glbimg.com/p1Qd8hpX-GOvWpttRWzaJi7kM3M=/0x0:275x183/984x0/smart/filters:strip_icc()/s.glbimg.com/po/rc/media/2013/10/06/22_47_50_299_Torrada_com_abacate.jpg",
+        "title": "Torrada com creme de abacate e frutas",
+        "directions": "Para fazer o creme de abacate basta amassar a fruta e adicionar metade suco de limão com 2 pitadas de sal e mexa bem até ficar cremoso e está pronto.<br /> Adicione o creme de abacate em cima do pão(que pode ser natural ou tostado) e coloque os tomates cereja fatiados por cima.",
+        "id": "caad254d0e8e4f479fd313d892755afa"
       }
     ]
   }

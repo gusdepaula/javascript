@@ -1,7 +1,6 @@
 export const elements = {
   searchForm: document.querySelector(".search"),
   searchInput: document.querySelector(".search__field"),
-  searchTitle: document.querySelector(".results__title"),
   searchRes: document.querySelector(".results"),
   searchResList: document.querySelector(".results__list"),
   searchResLink: document.querySelector(".results__link"),
@@ -10,6 +9,7 @@ export const elements = {
   shopping: document.querySelector(".shopping__list"),
   likesMenu: document.querySelector(".likes__field"),
   likesList: document.querySelector(".likes__list"),
+  likesPanel: document.querySelector(".likes__panel"),
 };
 
 export const elementStrings = {

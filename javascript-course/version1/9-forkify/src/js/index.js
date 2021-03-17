@@ -33,7 +33,6 @@ const controlSearch = async () => {
     searchView.clearInput();
     searchView.clearResults();
     renderLoader(elements.searchResList);
-    searchView.hideTitle();
     searchView.showResultsMobile();
 
     try {
@@ -76,7 +75,6 @@ elements.searchResPages.addEventListener("click", (e) => {
 const controlRecipe = async () => {
   // Get ID from url
   const id = window.location.hash.replace("#", "");
-  console.log(id);
 
   if (id) {
     // Prepate UI for changes
@@ -92,9 +90,6 @@ const controlRecipe = async () => {
     // Create new recipe object
     state.recipe = new Recipe(id);
 
-    //TESTING
-    // window.r = state.recipe;
-
     try {
       // Get recipe data
       await state.recipe.getRecipe();
@@ -105,12 +100,10 @@ const controlRecipe = async () => {
       state.recipe.calcServings();
 
       // Render recipe
-      // console.log(state.recipe.id);
       recipeView.hideResultsAndShowRecipe();
       clearLoader();
       recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
     } catch (err) {
-      console.log(err);
       console.log(`Erro no processamento da receita...😟`);
     }
   }

@@ -26,7 +26,6 @@ const formatCount = (count) => {
     }
   } else if (count === 0.33) {
     return "1/3";
-    return;
   } else {
     return "?";
   }
@@ -61,6 +60,7 @@ const createIngredient = (ingredient) => `
 export const renderRecipe = (recipe, isLiked) => {
   const markup = `
   <figure class="recipe__fig">
+    <a href="/" class="btn visible-xs recipe__back">&laquo; voltar</a>
     <img src="${recipe.img}" alt="${recipe.title}" class="recipe__img">
     <h1 class="recipe__title">
         <span>${recipe.title}</span>

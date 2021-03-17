@@ -11,7 +11,7 @@
     padding-left: 2rem;
   }
   .search__field {
-    width: 10rem;
+    width: 32.5rem;
   }
   .likes__field {
     padding: 0;
@@ -27,6 +27,28 @@
   }
   .results__title {
     font-size: 3rem;
+  }
+  .visible-xs {
+    display: block !important;
+  }
+}
+
+@media only screen and (max-width: 992px) and (min-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-areas: "head" "recipe" "list" "shopping" "footer";
+  }
+  .recipe__back {
+    left: 3rem;
+  }
+  .search__field {
+    width: 100%;
+  }
+  .hidden-xs {
+    display: none !important;
+  }
+  .visible-xs {
+    display: block !important;
   }
 }
 

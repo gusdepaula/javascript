@@ -214,7 +214,9 @@ body {
   display: flex;
   align-items: center;
   transition: all 0.3s;
-  padding-left: 3rem;
+  padding-left: 2rem;
+  border: 1px solid #f48982;
+  margin: 0 2rem 2rem 2rem;
 }
 .search:focus-within {
   transform: translateY(-2px);
@@ -226,7 +228,7 @@ body {
   font-family: inherit;
   color: inherit;
   font-size: 1.7rem;
-  width: 30rem;
+  width: 18rem;
 }
 .search__field:focus {
   outline: none;
@@ -251,10 +253,14 @@ body {
 .likes__field:hover {
   background-color: #f2efee;
 }
-.likes__panel:hover,
+/* .likes__panel:hover,
 .likes__field:hover + .likes__panel {
   visibility: visible;
   opacity: 1;
+} */
+.likes__panel-active {
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 .likes__icon {
   fill: #f59a83;
@@ -486,6 +492,13 @@ body {
   width: 2.75rem;
   fill: #fff;
 }
+.recipe__back {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  padding: 1.3rem 2rem 1.3rem 2rem;
+  text-decoration: none;
+}
 .recipe__ingredients {
   padding: 4rem 5rem;
   font-size: 1.5rem;
@@ -522,7 +535,7 @@ body {
   flex: 0 0 auto;
 }
 .recipe__directions {
-  padding: 4rem;
+  padding: 4rem 2rem;
   padding-bottom: 5rem;
   display: flex;
   flex-direction: column;
@@ -530,7 +543,7 @@ body {
 }
 .recipe__directions-text {
   font-size: 1.5rem;
-  text-align: center;
+  text-align: left;
   width: 90%;
   margin-bottom: 3rem;
   color: #968b87;
@@ -629,4 +642,8 @@ body {
 .copyright .twitter-link:link,
 .copyright .twitter-link:visited {
   color: #918581;
+}
+
+.visible-xs {
+  display: none;
 }

@@ -42,10 +42,6 @@ export const limitRecipeTitle = (title, limit = 40) => {
   return title;
 };
 
-export const hideTitle = () => {
-  elements.searchTitle.style.display = "none";
-};
-
 const renderRecipe = (recipe) => {
   const markup = `
     <li>

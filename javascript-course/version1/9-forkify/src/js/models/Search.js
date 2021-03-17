@@ -15,10 +15,8 @@ export default class Search {
         const queryLowerCase = this.query.toLowerCase();
 
         const filter = arrTitle.find((ing) => ing.includes(queryLowerCase));
-        console.log(filter);
         return filter;
       });
-      console.log(this.filteredQuery);
       if (this.filteredQuery.length === 0) {
         const markup = `
           <li>

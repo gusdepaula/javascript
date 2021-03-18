@@ -464,10 +464,10 @@ body {
 .recipe__info-buttons {
   display: flex;
   margin-left: 1.5rem;
-  /* visibility: hidden;
+  visibility: hidden;
   opacity: 0;
   transform: translateY(5px);
-  transition: all 0.4s; */
+  transition: all 0.4s;
 }
 .recipe:hover .recipe__info-buttons {
   visibility: visible;
@@ -512,7 +512,7 @@ body {
   background-color: #f2efee;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: inherit;
 }
 .recipe__ingredient-list {
   display: grid;

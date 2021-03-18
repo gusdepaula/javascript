@@ -49,19 +49,15 @@ const createIngredient = (ingredient) => `
         <svg class="recipe__icon">
             <use href="img/icons.svg#icon-check"></use>
         </svg>
-        <div class="recipe__count">${formatCount(ingredient.count)}</div>
-        <div class="recipe__ingredient">
-            <span class="recipe__unit">${ingredient.unit}</span>
-            ${ingredient.ingredient}
-        </div>
+        ${ingredient}
     </li>
 `;
 
-export const renderRecipe = (recipe, isLiked) => {
+export const renderRecipe = (recipe) => {
   const markup = `
   <figure class="recipe__fig">
     <a href="/" class="btn visible-xs recipe__back">&laquo; voltar</a>
-    <img src="${recipe.img}" alt="${recipe.title}" class="recipe__img">
+    <img src="${recipe.image_url}" alt="${recipe.title}" class="recipe__img">
     <h1 class="recipe__title">
         <span>${recipe.title}</span>
     </h1>
@@ -100,11 +96,9 @@ export const renderRecipe = (recipe, isLiked) => {
         </div>
 
     </div>
-    <button class="recipe__love">
+    <button class="recipe__love hidden-xs">
         <svg class="header__likes">
-            <use href="img/icons.svg#icon-heart${
-              isLiked ? "" : "-outlined"
-            }"></use>
+            <use href="img/icons.svg#icon-heart"></use>
         </svg>
     </button>
     </div>
@@ -124,10 +118,10 @@ export const renderRecipe = (recipe, isLiked) => {
 
     <div class="recipe__directions">
     <h2 class="heading-2">Modo de preparo</h2>
-    <p class="recipe__directions-text preWrap">${recipe.cooking}</p>
+    <p class="recipe__directions-text preWrap">${recipe.directions}</p>
     <p class="recipe__directions-text">
         Esta receita foi cuidadosamente desenvolvida e testada por
-        <span class="recipe__by">${recipe.author}</span>. 
+        <span class="recipe__by">${recipe.publisher}</span>. 
     </p>
     </div>
   `;

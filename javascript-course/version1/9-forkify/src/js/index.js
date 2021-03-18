@@ -99,18 +99,15 @@ const controlRecipe = async () => {
 
     try {
       // Get recipe data
-      await state.recipe.getRecipe();
-      state.recipe.parseIngredients();
-
-      // Calcultate servings and time
-      state.recipe.calcTime();
-      state.recipe.calcServings();
+      const recipe = await state.recipe.getRecipe();
+      console.log(recipe);
 
       // Render recipe
       recipeView.hideResultsAndShowRecipe();
       clearLoader();
-      recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
+      recipeView.renderRecipe(recipe, state.likes.isLiked(id));
     } catch (err) {
+      console.log(err);
       console.log(`Erro no processamento da receita...😟`);
     }
   }

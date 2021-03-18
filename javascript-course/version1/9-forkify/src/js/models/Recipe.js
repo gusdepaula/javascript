@@ -1,4 +1,5 @@
 import axios from "axios";
+import { config } from "../views/config";
 
 export default class Recipe {
   constructor(id) {
@@ -6,7 +7,33 @@ export default class Recipe {
   }
 
   async getRecipe() {
-    try {
+    return new Promise((resolve, reject) => {
+      const id = this.id;
+      // Initialize Firebase
+      firebase.initializeApp(config);
+
+      //Create a node at firebase location to add locations as child keys
+      firebase
+        .database()
+        .ref("data")
+        .on("value", (snapshot) => {
+          const data = snapshot.val().recipes;
+          const filteredId = data.filter((item) => item.id === id);
+
+          console.log(filteredId);
+
+          const title = filteredId[0].title;
+          const author = filteredId[0].publisher;
+          const img = filteredId[0].image_url;
+          const ingredients = filteredId[0].ingredients;
+          const cooking = filteredId[0].directions;
+
+          console.log(filteredId[0]);
+
+          return resolve(filteredId);
+        });
+    });
+    /* try {
       const res = await axios(`data.json?id=${this.id}`);
 
       this.filteredId = res.data.data.recipes.filter(
@@ -22,18 +49,18 @@ export default class Recipe {
       //   console.log(this.filteredId);
     } catch (error) {
       console.log(error);
-    }
+    } */
   }
 
   calcTime() {
     // Assuming that we need 15 min for each 3 ingredients
-    const numIng = this.ingredients.length;
+    const numIng = filteredId.ingredients.length;
     const periods = Math.ceil(numIng / 3);
-    this.time = periods * 15;
+    filteredId.time = periods * 15;
   }
 
   calcServings() {
-    this.servings = 2;
+    filteredId.servings = 2;
   }
 
   parseIngredients() {
@@ -69,7 +96,7 @@ export default class Recipe {
     ];
     const units = [...unitsShort, "kg", "g"];
 
-    const newIngredients = this.ingredients.map((el) => {
+    const newIngredients = filteredId.ingredients.map((el) => {
       // 1) Uniform units
       let ingredient = el.toLowerCase();
       unitsLong.forEach((unit, i) => {
@@ -120,17 +147,18 @@ export default class Recipe {
 
       return objIng;
     });
-    this.ingredients = newIngredients;
+    filteredId.ingredients = newIngredients;
   }
   updateServings(type) {
     // Servings
-    const newServings = type === "dec" ? this.servings - 1 : this.servings + 1;
+    const newServings =
+      type === "dec" ? filteredId.servings - 1 : thfilteredIdis.servings + 1;
 
     // Ingredients
     this.ingredients.forEach((ing) => {
-      ing.count *= newServings / this.servings;
+      ing.count *= newServings / filteredId.servings;
     });
 
-    this.servings = newServings;
+    filteredId.servings = newServings;
   }
 }

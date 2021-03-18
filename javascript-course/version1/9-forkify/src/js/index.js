@@ -37,11 +37,11 @@ const controlSearch = async () => {
 
     try {
       // 4) Search for recipes
-      await state.search.getResults();
+      const filteredQuery = await state.search.getResults();
 
       // 5) Render results on UI
       clearLoader();
-      searchView.renderResults(state.search.filteredQuery);
+      searchView.renderResults(filteredQuery);
     } catch (err) {
       console.log(`Deu alguma coisa errada com a pesquisa...😟`);
       clearLoader();

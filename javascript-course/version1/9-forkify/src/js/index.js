@@ -37,11 +37,11 @@ const controlSearch = async () => {
 
     try {
       // 4) Search for recipes
-      const filteredQuery = await state.search.getResults();
+      await state.search.getResults();
 
       // 5) Render results on UI
       clearLoader();
-      searchView.renderResults(filteredQuery);
+      searchView.renderResults(state.search.filteredQuery);
     } catch (err) {
       console.log(`Deu alguma coisa errada com a pesquisa...😟`);
       clearLoader();
@@ -99,15 +99,18 @@ const controlRecipe = async () => {
 
     try {
       // Get recipe data
-      const recipe = await state.recipe.getRecipe();
-      console.log(recipe);
+      await state.recipe.getRecipe();
+      state.recipe.parseIngredients();
+
+      // Calcultate servings and time
+      state.recipe.calcTime();
+      state.recipe.calcServings();
 
       // Render recipe
       recipeView.hideResultsAndShowRecipe();
       clearLoader();
-      recipeView.renderRecipe(recipe, state.likes.isLiked(id));
+      recipeView.renderRecipe(state.recipe, state.likes.isLiked(id));
     } catch (err) {
-      console.log(err);
       console.log(`Erro no processamento da receita...😟`);
     }
   }

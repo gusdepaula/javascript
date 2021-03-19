@@ -45,8 +45,8 @@ body {
   box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2);
   display: grid;
   grid-template-rows: 10rem minmax(100rem, auto);
-  grid-template-columns: 1.1fr 2fr 1.1fr;
-  grid-template-areas: "head head head" "list recipe shopping" "footer footer footer";
+  grid-template-columns: 1.1fr 2fr;
+  grid-template-areas: "head head" "list recipe" "footer footer";
 }
 
 .btn,
@@ -438,7 +438,7 @@ body {
   background-image: linear-gradient(to right bottom, #fbdb89, #f48982);
 }
 .recipe__details {
-  display: flex;
+  display: none;
   align-items: center;
   padding: 8rem 3rem 3rem 3rem;
 }
@@ -506,8 +506,8 @@ body {
   text-decoration: none;
 }
 .recipe__ingredients {
-  padding: 4rem 5rem;
-  font-size: 1.5rem;
+  padding: 8rem 5rem 4rem 5rem;
+  font-size: 1.6rem;
   line-height: 1.4;
   background-color: #f2efee;
   display: flex;
@@ -548,7 +548,7 @@ body {
   align-items: center;
 }
 .recipe__directions-text {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   text-align: left;
   width: 90%;
   margin-bottom: 3rem;

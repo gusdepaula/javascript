@@ -112,7 +112,7 @@ const controlRecipe = async () => {
       // Render recipe
       recipeView.hideResultsAndShowRecipe();
       clearLoader();
-      recipeView.renderRecipe(recipe);
+      recipeView.renderRecipe(recipe, state.likes.isLiked(id));
     } catch (err) {
       console.log(err);
       console.log(`Erro no processamento da receita...😟`);
@@ -165,16 +165,14 @@ const controlLike = () => {
     state.likes = new Likes();
   }
   const currentID = state.recipe.id;
-
+  const title = document.querySelector(".recipe__title span").innerHTML;
+  const author = document.querySelector(".recipe__by").innerHTML;
+  const img = document.querySelector(".recipe__fig img").src;
   // User has not yet liked current recipe
+  console.log(state.likes.isLiked(currentID));
   if (!state.likes.isLiked(currentID)) {
     // Add like to the state
-    const newLike = state.likes.addLike(
-      currentID,
-      state.recipe.title,
-      state.recipe.author,
-      state.recipe.img
-    );
+    const newLike = state.likes.addLike(currentID, title, author, img);
 
     // Toggle the like button
     likesView.toggleLikeBtn(true);

@@ -58,7 +58,7 @@ const createIngredient = (ingredient) => {
   }
 };
 
-export const renderRecipe = (recipe) => {
+export const renderRecipe = (recipe, isLiked) => {
   const markup = `
   <figure class="recipe__fig">
     <a href="/" class="btn visible-xs recipe__back">&laquo; voltar</a>
@@ -101,14 +101,14 @@ export const renderRecipe = (recipe) => {
         </div>
 
     </div>
-    <button class="recipe__love hidden-xs">
-        <svg class="header__likes">
-            <use href="img/icons.svg#icon-heart"></use>
-        </svg>
-    </button>
     </div>
 
     <div class="recipe__ingredients">
+    <button class="recipe__love">
+        <svg class="header__likes">
+        <use href="img/icons.svg#icon-heart${isLiked ? "" : "-outlined"}"></use>
+        </svg>
+    </button>
     <ul class="recipe__ingredient-list">
         ${recipe.ingredients.map((el) => createIngredient(el)).join("")}
     </ul>

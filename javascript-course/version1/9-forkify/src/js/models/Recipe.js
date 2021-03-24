@@ -1,4 +1,3 @@
-import axios from "axios";
 import { fb } from "../views/config";
 
 export default class Recipe {

@@ -42,6 +42,16 @@ const controlSearch = async () => {
       // 5) Render results on UI
       clearLoader();
       searchView.renderResults(filteredQuery);
+
+      // 6) Add pagination on UI
+      elements.searchResPages.addEventListener("click", (e) => {
+        const btn = e.target.closest(".btn-inline");
+        if (btn) {
+          const goToPage = Number(btn.dataset.goto, 10);
+          searchView.clearResults();
+          searchView.renderResults(filteredQuery, goToPage);
+        }
+      });
     } catch (err) {
       console.log(`Deu alguma coisa errada com a pesquisa...😟`);
       clearLoader();
@@ -59,15 +69,6 @@ elements.searchForm.addEventListener("submit", (e) => {
 //   e.preventDefault();
 //   controlSearch();
 // });
-
-elements.searchResPages.addEventListener("click", (e) => {
-  const btn = e.target.closest(".btn-inline");
-  if (btn) {
-    const goToPage = Number(btn.dataset.goto, 10);
-    searchView.clearResults();
-    searchView.renderResults(state.search.filteredQuery, goToPage);
-  }
-});
 
 elements.likesMenu.addEventListener("click", () => {
   elements.likesPanel.classList.add("likes__panel-active");
@@ -157,7 +158,7 @@ elements.shopping.addEventListener("click", (e) => {
 });
 
 /**
- * LIST CONTROLLER
+ * LIKE CONTROLLER
  */
 const controlLike = () => {
   if (!state.likes) {

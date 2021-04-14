@@ -20,8 +20,10 @@ export default class Search {
           .ref("data")
           .on("value", (snapshot) => {
             const data = snapshot.val();
+
             const filteredQuery = data.filter((item) => {
-              const arrTitle = [item.title.toLowerCase().split(" ")];
+              const arrTitle = [item.title.toLowerCase()];
+              console.log(arrTitle);
               const queryLowerCase = query.toLowerCase();
 
               const filter = arrTitle.find((ing) =>

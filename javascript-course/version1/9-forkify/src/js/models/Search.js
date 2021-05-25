@@ -23,7 +23,7 @@ export default class Search {
 
             const filteredQuery = data.filter((item) => {
               const arrTitle = [item.title.toLowerCase()];
-              console.log(arrTitle);
+              // console.log(arrTitle);
               const queryLowerCase = query.toLowerCase();
 
               const filter = arrTitle.find((ing) =>

@@ -217,7 +217,7 @@ body {
 .search {
   background-color: #fff;
   border-radius: 10rem;
-  display: flex;
+  /* display: flex; */
   align-items: center;
   transition: all 0.3s;
   padding-left: 2rem;
@@ -234,7 +234,10 @@ body {
   font-family: inherit;
   color: inherit;
   font-size: 1.7rem;
-  width: 28.1rem;
+  width: 100%;
+  display: table-cell;
+  margin-bottom: 0;
+  height: 3.8rem;
 }
 .search__field:focus {
   outline: none;
@@ -652,4 +655,28 @@ body {
 
 .visible-xs {
   display: none;
+}
+
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+}
+
+.input-group-btn {
+  position: relative;
+  white-space: nowrap;
+}
+
+.input-group-addon,
+.input-group-btn {
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.input-group-addon,
+.input-group-btn,
+.input-group .form-control {
+  display: table-cell;
 }

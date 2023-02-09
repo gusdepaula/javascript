@@ -7,8 +7,14 @@ const listaTeclas = document.querySelectorAll(".tecla");
 let contador = 0;
 
 while (contador < listaTeclas.length) {
-  listaTeclas[contador].addEventListener("click", function () {
-    tocaSom();
+  const tecla = listaTeclas[contador];
+
+  const instrumento = tecla.classList[1];
+
+  const idAudio = `#som_${instrumento}`;
+
+  tecla.addEventListener("click", function () {
+    tocaSom(idAudio);
   });
   contador++;
 }

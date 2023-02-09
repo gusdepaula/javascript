@@ -4,4 +4,10 @@ function tocaSomPom() {
 
 const listaTeclas = document.querySelectorAll(".tecla");
 
-listaTeclas[0].addEventListener("click", tocaSomPom);
+let contador = 0;
+
+while (contador < listaTeclas.length) {
+  listaTeclas[contador].addEventListener("click", tocaSomPom);
+  contador++;
+  console.log(contador);
+}

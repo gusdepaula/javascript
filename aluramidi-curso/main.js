@@ -3,3 +3,5 @@ function tocaSomPom() {
 }
 
 const listaTeclas = document.querySelectorAll(".tecla");
+
+listaTeclas[0].addEventListener("click", tocaSomPom);

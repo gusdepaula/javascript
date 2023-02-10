@@ -15,8 +15,10 @@ for (let index = 0; index < listaTeclas.length; index++) {
     tocaSom(idAudio);
   });
 
-  tecla.onkeydown = function () {
-    tecla.classList.add("ativa");
+  tecla.onkeydown = function (e) {
+    if (e.key == "Enter" || e.code == "Space") {
+      tecla.classList.add("ativa");
+    }
   };
 
   tecla.onkeyup = function () {
